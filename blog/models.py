@@ -37,4 +37,11 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
+    class Meta:
+        """ Ordering blog comments by created on date """
+        ordering = ["-created_on"]
+    
+    def __str__(self):
+        return f"Comment {self.body} by {self.user_id}"
+
 
