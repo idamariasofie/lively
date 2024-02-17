@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Recipe
 
 # Create your views here.
-def blog_lively(request):
-    return HttpResponse("This would be the blog page")
+class PostList(generic.ListView):
+    queryset = Recipe.objects.all()
+    template_name = "post_list.html"
