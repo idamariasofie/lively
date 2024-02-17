@@ -12,4 +12,5 @@ urlpatterns = [
     path("", include("blog.urls"), name="blog-urls"),
     path('contact/', contact_views.contact_lively, name='contact'),
     path('admin/', admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
 ]
