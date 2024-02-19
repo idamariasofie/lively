@@ -3,4 +3,13 @@ from django.http import HttpResponse
 
 # Create your views here.
 def about_lively(request):
-    return HttpResponse("This would be the about page")
+    """
+    Renders the About page
+    """
+    about = About.objects.all().order_by('-updated_on').first()
+
+    return render(
+        request,
+        "about/about.html",
+        {"about": about},
+    )
