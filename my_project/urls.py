@@ -7,9 +7,9 @@ from contact import views as contact_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('about/', about_views.about_lively, name='about'),
     path('home/', index_views.index, name='index'),
     path('recipes/', recipes_views.recipes_lively, name='recipes'),
-    path('about/', about_views.about_lively, name='about'),
     path("", include("blog.urls"), name="blog-urls"),
     path('contact/', contact_views.contact_lively, name='contact'),
     path("accounts/", include("allauth.urls")),
