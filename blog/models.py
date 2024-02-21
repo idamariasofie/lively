@@ -7,7 +7,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Recipe(models.Model):
     """ A model for creating a recipe post """
     author = models.ForeignKey(
-    User, on_delete=models.CASCADE, related_name="blog_posts")
+    User, on_delete=models.CASCADE, related_name="recipe_author")
     title = models.CharField(max_length=300, unique=True)
     slug = models.SlugField(max_length=300, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -31,7 +31,7 @@ class Recipe(models.Model):
 class Comment(models.Model):
     """ A model to allow and manage comments on recipe blog posts """
     user_id = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="comments", null=True)
+        User, on_delete=models.CASCADE, related_name="comment_user", null=True)
     recipe_id = models.CharField(max_length=500)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
