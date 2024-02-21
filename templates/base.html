@@ -23,8 +23,8 @@
         href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:wght@200;300&family=Source+Serif+4:opsz,wght@8..60,300&display=swap"
         rel="stylesheet">
 
-     <!-- Font Awesome -->
-     <script src="https://kit.fontawesome.com/719598697c.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/719598697c.js" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -68,20 +68,20 @@
                     </li>
                 </ul>
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
-                            href="{% url 'account_logout' %}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
-                            href="{% url 'account_signup' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
-                            href="{% url 'account_login' %}">Login</a>
-                    </li>
-                    {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
+                        href="{% url 'account_logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
+                        href="{% url 'account_signup' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
+                        href="{% url 'account_login' %}">Login</a>
+                </li>
+                {% endif %}
             </div>
         </div>
     </nav>
@@ -104,6 +104,13 @@
 
         {% block content %}
         <!-- Content Goes here -->
+
+        <!-- HERO SECTION -->
+        <header class="p-4 my-2 rounded-3">
+            <div class="container-fluid"></div>
+            <h1 class="display-3">Lively healthy recipes</h1>
+            <button class="btn btn-dark btn-lg" type="button"></button>
+        </header>
         {% endblock content %}
 
     </main>
@@ -118,7 +125,7 @@
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i>
         </p>
-            
+
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
