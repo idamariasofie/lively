@@ -1,0 +1,202 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- SUB HERO SECTION -->
+<div class="hero-bg-setup" style="
+    background-image: url(https://simplegreensmoothies.com/wp-content/uploads/chocolate-smoothie-HERO.jpg);
+    height: 70vh;
+  ">
+    <div class="sub-hero-content">
+        <h3 class="hero-center b-bg">HOME / BLOG -> Recipes</h3>
+        <h1 class="hero-center w-bg w-bg-h1">Healthy Smoothies</h1>
+        <p class="hero-center w-bg w-bg-p">
+            Explore practical tips, mouthwatering recipes, sample plans and expert
+            advice on creating healthy meal plans to leave you feeling satisfied and
+            energized.
+        </p>
+    </div>
+</div>
+<!-- END OF SUB HERO -->
+<!-- CONTENT BLOG SECTION 1-->
+<section class="blog-texts">
+    <p class="blog-p">
+        Are you tired of feeling sluggish and lacking energy throughout the day? Do
+        you struggle to create healthy meal plans that are nutritious, delicious AND
+        easy to stick to? Look no further, because this guide is here to help you!</br>
+    </p>
+    <p class="blog-p">
+        With all we’ve got going on in life, it’s easy to default to unhealthy eating
+        habits. It sometimes happens to me, too! With a little bit of planning and
+        creativity, you can take control of your menu and transform your health.
+        Whether you’re slaying it at work, juggling the kids, celebrating retirement
+        or a fitness enthusiast, I’m here to help you fuel your body and save your
+        sanity.
+    </p>
+    <h1 class="blog-h1">5 Essentials of a Healthy Meal Plan</h1>
+    <p class="blog-p">
+        Around here, we’re all about a lifestyle… not a diet. Each meal plan is carefully crafted to meet very specific
+        needs,
+        including diabetes, vegan, weight loss, etc. We want lasting results— and a plant-based foundation is where it’s
+        at!</br></br>
+        Here’s what we consider the essential 5 characteristics of a healthy meal plan:</br></br>
+        1.<strong>Weekly Menu:</strong> Knowing what to eat (and when) is super helpful when meal planning, which is why
+        we include a menu in
+        calendar mode for all our meal plans. I suggest printing out the weekly menu and keep in your fridge to help
+        keep you on
+        track.</br></br>
+        2.<strong>Grocery List:</strong> Having a list of exactly what you need to buy to make all the recipes is
+        essential to successful meal
+        planning. With all our healthy meal plans, we calculate exactly what you need each week to make grocery shopping
+        a
+        breeze. From cups of black beans, to tablespoons of whole grains to ounces of quinoa, you’ll know how much to
+        buy.</br></br>
+        3.<strong>Daily Smoothie:</strong> At Simple Green Smoothies, we believe a daily smoothie fuels our passions.
+        Each meal plan includes a
+        variety of smoothies (green smoothies, fruit smoothies and meal replacement smoothies) throughout the week to
+        boost
+        energy and nourish your body.</br></br>
+        4.<strong>Protein-Rich Snacks:</strong> We don’t believe in being hangry— and have included protein-rich snacks
+        to keep hunger at bay. Our
+        tamari oven roasted almonds and apple donuts are great examples of plant-based snacks we use in our meal
+        plans.</br></br>
+        5.<strong>Plant-Based Dinners:</strong> We use a LOT of vegetables with our meals, which is a great way to get
+        additional fiber and
+        nutrients into your bod. Our dinners often include veggie bowls, vegan pizza and plant-based tacos— where
+        vegetables are
+        the star.
+
+    </p>
+
+</section>
+<section id="blog-content-1" class="content">
+    <h2 class="title">ALL HEALTHY SMOOTHIES</h2>
+    <div class="container">
+        <div class="row">
+            {% for recipe in recipe_list %} {% if forloop.counter == 2%}
+            <div class="col-md-4">
+                <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
+                    <div class="content-box bg-linear-gradient">
+                        <div class="content-img">
+                            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
+                        </div>
+                        <div class="content-description">
+                            <h4>{{ recipe.title }}</h4>
+                            <p>{{ recipe.overview | slice:":85"}} . . .</p>
+                        </div>
+                        <div class="author-info">
+                            <span><img class="author-img" src="{{ recipe.author.author_picture.url }}"
+                                    alt="{{ recipe.author }} Image" /></span>
+                            <span>{{ recipe.author }} | </span>
+                            <span><i class="fas fa-clock"></i>{{ recipe.timestamp | timesince }}|
+                            </span>
+                            <span><i class="fas fa-heart"></i>{{ recipe.number_of_likes }}</span>
+                            <span class="text-secondary">| <i class="far fa-comments"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% else%}
+            <div class="col-md-4">
+                <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
+                    <div class="content-box">
+                        <div class="content-img">
+                            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
+                        </div>
+                        <div class="content-description">
+                            <h4>{{ recipe.title }}</h4>
+                            <p>{{ recipe.overview | slice:":85"}} . . .</p>
+                        </div>
+                        <div class="author-info">
+                            <span><img class="author-img" src="{{ recipe.author.author_picture.url }}"
+                                    alt="{{ recipe.author }} Image" /></span>
+                            <span>{{ recipe.author }} | </span>
+                            <span><i class="fas fa-clock"></i>{{ recipe.timestamp | timesince }}|
+                            </span>
+                            <span><i class="fas fa-heart"></i>{{ recipe.number_of_likes }}</span>
+                            <span class="text-secondary">| <i class="far fa-comments"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- END OF CONTENT BLOG SECTION -->
+
+<!-- CONTENT BLOG SECTION 2 (UNDER 991px)-->
+<section id="blog-content-2" class="content">
+    <h2 class="title">The Blog</h2>
+    <div class="container">
+        <div class="row">
+            {% for recipe in recipe_list %} {% if forloop.counter == 2%}
+            <div class="col-md-6">
+                <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
+                    <div class="content-box bg-linear-gradient">
+                        <div class="content-img">
+                            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
+                        </div>
+                        <div class="content-description">
+                            <h4>{{ recipe.title }}</h4>
+                            <p>{{ recipe.overview | slice:":85"}} . . .</p>
+                        </div>
+                        <div class="author-info">
+                            <span><img class="author-img" src="{{ recipe.author.author_picture.url }}"
+                                    alt="{{ recipe.author }} Image" /></span>
+                            <span>{{ recipe.author }} | </span>
+                            <span><i class="fas fa-clock"></i>{{ recipe.timestamp | timesince }}|
+                            </span>
+                            <span><i class="fas fa-heart"></i>{{ recipe.number_of_likes }}</span>
+                            <span class="text-secondary">| <i class="far fa-comments"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% else%}
+            <div class="col-md-6">
+                <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
+                    <div class="content-box">
+                        <div class="content-img">
+                            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
+                        </div>
+                        <div class="content-description">
+                            <h4>{{ recipe.title }}</h4>
+                            <p>{{ recipe.overview | slice:":85"}} . . .</p>
+                        </div>
+                        <div class="author-info">
+                            <span><img class="author-img" src="{{ recipe.author.author_picture.url }}"
+                                    alt="{{ recipe.author }} Image" /></span>
+                            <span>{{ recipe.author }} | </span>
+                            <span><i class="fas fa-clock"></i>{{ recipe.timestamp | timesince }}|
+                            </span>
+                            <span><i class="fas fa-heart"></i>{{ recipe.number_of_likes }}</span>
+                            <span class="text-secondary">| <i class="far fa-comments"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- END OF CONTENT BLOG SECTION 2 -->
+
+<!-- PAGINATION SECTION -->
+{% if is_paginated %}
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li>
+            <a href="?page={{ page_obj.previous_page_number }}" aria-label="Go to the blog next page"
+                class="page-link">&laquo; PREV
+            </a>
+        </li>
+        {% endif %} {% if page_obj.has_next %}
+        <li>
+            <a href="?page={{ page_obj.next_page_number }}" aria-label="Go to the blog back page" class="page-link">
+                NEXT &raquo;</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+<!-- END OF PAGINATION SECTION -->
+{% endif %} {% endblock content %}

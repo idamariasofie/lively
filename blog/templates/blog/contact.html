@@ -1,0 +1,110 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- SUB HERO SECTION -->
+<div
+  class="hero-bg-setup"
+  style="
+    background-image: url(https://simplegreensmoothies.com/wp-content/uploads/hero-about-smoothies-1200x460.jpg);
+    height: 70vh;
+  "
+>
+  <div class="sub-hero-content">
+    <h3 class="hero-center b-bg">HOME / CONTACT</h3>
+    <h1 class="hero-center w-bg w-bg-h1">Contact Us</h1>
+    <p class="hero-center w-bg w-bg-p">
+      Thanks for visiting Simple Green Smoothies. If you have a question
+      regarding a specific recipe, please ask your question in the comments
+      section at the bottom of the recipe post. If you have another question (or
+      just want to say hello!) please feel free to send us a message below.
+      Please note that we are unable to give personalized health advice or
+      guidance.
+    </p>
+  </div>
+</div>
+<!-- END OF SUB HERO -->
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="contact-details">
+          <h4>you can reach us here!</h4>
+          <p><i class="fas fa-phone"></i>+49 175 458 95</p>
+          <p><i class="far fa-envelope"></i>info@smoothiesblog.com</p>
+          <p><i class="fas fa-home"></i>NordStr. 15 64581 Germany</p>
+        </div>
+        <div>
+          <!--{% if name %}
+          <h4 class="email-sent-message alert-success">
+            Thanks for your email {{ name}}.<br />
+            We will contact you as soon as possible!
+          </h4>
+          {% endif %}-->
+          <h4 id="email_alert" class="color-trans">..</h4>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <!-- contact form -->
+        <form
+          action="{% url 'contact' %}"
+          onsubmit="return sendMail(this);"
+          class="row g-3"
+        >
+          {% csrf_token %}
+          <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="surname" class="form-label">Surname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="surname"
+              name="surname"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="subject" class="form-label">Subject</label>
+            <input
+              type="text"
+              class="form-control"
+              id="subject"
+              name="subject"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" />
+          </div>
+          <div class="col-md-12">
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="5"
+              name="message"
+              cols="40"
+              required
+            ></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-contact">Send</button>
+          </div>
+        </form>
+        <!-- end of contact form -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END OF CONTACT SECTION -->
+
+{% endblock content %}
