@@ -8,7 +8,7 @@ urlpatterns = [
     path('', include('blog.urls')),  
     path('about/', blog_views.about, name='about'),
     path('home/', index_views.index, name='index'),
-    path('recipes/<slug:slug>/', blog_views.recipe_detail, name='recipe_detail'),
+    path('recipes/', blog_views.recipe_detail, name='recipe_detail'),
     path('blog/', blog_views.blog_page, name="blog-urls"),
     path('contact/', blog_views.contact, name='contact'),
     path("accounts/", include("allauth.urls")),
