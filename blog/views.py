@@ -7,9 +7,6 @@ from .forms import CommentForm
 def home(request):
     return render(request, 'blog/home.html')
 
-def recipe_list(request):
-    return render(request, 'blog/recipe_list.html')  # Renamed from 'recipes' to 'recipe_list'
-
 def about(request):
     return render(request, 'blog/about.html')
 
