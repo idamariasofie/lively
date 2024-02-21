@@ -22,24 +22,6 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 def recipe_detail(request, slug):
-    """
-    Display an individual :model:`blog.Recipe`.
-
-    Args:
-        slug (str): The slug of the recipe.
-
-    Returns:
-        HttpResponse: Rendered HTML response.
-
-    Context:
-        post (Recipe): An instance of :model:`blog.Recipe`.
-        comments (QuerySet): Comments related to the recipe.
-        comment_count (int): Count of approved comments.
-        comment_form (CommentForm): Form for submitting comments.
-
-    Template:
-        blog/recipe_detail.html
-    """
     queryset = Recipe.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
@@ -58,7 +40,7 @@ def recipe_detail(request, slug):
             )
 
     comment_form = CommentForm()
-    
+
     return render(
         request,
         "blog/recipe_detail.html",
