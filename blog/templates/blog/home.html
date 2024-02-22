@@ -29,7 +29,7 @@
       <div
         class="carousel-item bg-setup active"
         style="
-          background-image: url('static/images/hermes-rivera-Ww8eQWjMJWk-unsplash.webp');
+          background-image: url('{% static 'images/hermes-rivera-Ww8eQWjMJWk-unsplash.webp' %}');
           height: 80vh;
         "
       >
@@ -126,7 +126,7 @@
 <!-- END OF HERO SECTION -->
 <!-- CONTENT SECTION -->
 <section id="home-content-1" class="content">
-  <h2 class="title">Our Latest Recepies</h2>
+  <h2 class="title">Our recepies</h2>
   <div class="container">
     <div class="row row-reverse">
       {% for recipe in recipe_list %} {% if forloop.counter == 1 %}
