@@ -4,6 +4,14 @@ from django.contrib.auth.models import User
 STATUS = ((0, "Draft"), (1, "Published"))
 
 # Create your models here.
+class Category(models.Model):
+    """
+    Model for category
+    """
+    title = models.CharField(max_length=300, unique=True)
+    
+
+
 class Recipe(models.Model):
     """ A model for creating a recipe post """
     author = models.ForeignKey(
@@ -30,9 +38,10 @@ class Recipe(models.Model):
 
 class Comment(models.Model):
     """ A model to allow and manage comments on recipe blog posts """
-    user_id = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="comment_user", null=True)
-    recipe_id = models.CharField(max_length=500)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE,
+                                related_name="comments", null=True)
+    name = models.CharField(max_length=80, default='')
+    email = models.EmailField(null=True, blank=True, default=None)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
@@ -42,7 +51,12 @@ class Comment(models.Model):
         ordering = ['-created_on']
     
     def __str__(self):
-        return f"Comment {self.body} by {self.user_id}"
+        return f"Comment {self.body} by {self.name}"
+
+    def get_absolute_url(self):
+        """Sets absolute URL"""
+        return reverse('recipe_detail', args=[self.recipe.slug])
+
 
 class About(models.Model):
     title = models.CharField(max_length=200)
@@ -51,5 +65,3 @@ class About(models.Model):
 
     def __str__(self):
         return self.title
-
-

@@ -21,11 +21,11 @@ class PostList(generic.ListView):
     template_name = "blog/home.html"
     paginate_by = 6
 
-def recipe_detail(request, slug):
+def recipe_detail(request):
     queryset = Recipe.objects.filter(status=1)
-    post = get_object_or_404(queryset, slug=slug)
+    post = queryset.first() 
     comments = post.comments.all().order_by("-created_on")
-    comment_count = post.comment.filter(approved=True).count()
+    comment_count = post.comments.filter(approved=True).count()
 
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
