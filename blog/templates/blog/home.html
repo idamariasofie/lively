@@ -4,60 +4,36 @@
 <section id="hero">
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#myCarousel"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#myCarousel"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#myCarousel"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-      <div
-        class="carousel-item bg-setup active"
-        style="
+      <div class="carousel-item bg-setup active" style="
           background-image: url('{% static 'images/hermes-rivera-Ww8eQWjMJWk-unsplash.webp' %}');
           height: 80vh;
-        "
-      >
+        ">
         <div class="container">
           <div class="carousel-caption text-start">
             <h2>Welcome to Lively</h2>
             <p>
-              Here we cook and eat healthy and simple vegetarian food with natural ingredients, whole grains, good fats, fruit and vegetables.
+              Here we cook and eat healthy and simple vegetarian food with natural ingredients, whole grains, good fats,
+              fruit and vegetables.
             </p>
             <p>
-              <a
-                class="btn btn-lg btn-primary mt-4 dis-small"
-                href="recipe_detail.html"
-                aria-label="Take me to your recipes"
-                >Discover Now</a
-              >
+              <a class="btn btn-lg btn-primary mt-4 dis-small" href="recipe_detail.html"
+                aria-label="Take me to your recipes">Discover Now</a>
             </p>
           </div>
         </div>
       </div>
 
-      <div
-        class="carousel-item bg-setup"
-        style="
+      <div class="carousel-item bg-setup" style="
           background-image: url('static/images/charlesdeluvio-Ms9xBg3Gtr8-unsplash.webp');
           height: 80vh;
-        "
-      >
+        ">
         <div class="container">
           <div class="carousel-caption text-start">
             <h2>MEAL REPLACEMENT SMOOTHIES</h2>
@@ -67,23 +43,16 @@
               upgrade your breakfast and energize your day.
             </p>
             <p>
-              <a
-                class="btn btn-lg btn-primary mt-4"
-                href="categories"
-                aria-label="Go to the content home section dis-small"
-                >Discover Now</a
-              >
+              <a class="btn btn-lg btn-primary mt-4" href="categories"
+                aria-label="Go to the content home section dis-small">Discover Now</a>
             </p>
           </div>
         </div>
       </div>
-      <div
-        class="carousel-item bg-setup"
-        style="
+      <div class="carousel-item bg-setup" style="
           background-image: url('static/images/brooke-lark-W9OKrxBqiZA-unsplash.jpg');
           height: 80vh;
-        "
-      >
+        ">
         <div class="container">
           <div class="carousel-caption text-start">
             <h2>HEALTHY START OF THE DAY HAPPY LIFE</h2>
@@ -92,32 +61,18 @@
               you will feel.
             </p>
             <p>
-              <a
-                class="btn btn-lg btn-primary mt-4"
-                href="categories"
-                aria-label="Go to the content home section dis-small"
-                >Discover Now</a
-              >
+              <a class="btn btn-lg btn-primary mt-4" href="categories"
+                aria-label="Go to the content home section dis-small">Discover Now</a>
             </p>
           </div>
         </div>
       </div>
     </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#myCarousel"
-      data-bs-slide="prev"
-    >
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#myCarousel"
-      data-bs-slide="next"
-    >
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -129,17 +84,11 @@
   <h2 class="title">Our recepies</h2>
   <div class="container">
     <div class="row row-reverse">
-      {% for recipe in recipe_list %} {% if forloop.counter == 1 %}
+      {% for recipe in recipe_detail %} {% if forloop.counter == 1 %}
       <div class="col-md-3">
-        <a
-          href="{% url 'recipe_detail' recipe.slug %}"
-          aria-label="Go to the recipe detail page"
-        >
+        <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
           <div class="content-img">
-            <img
-              src="{{ recipe.featured_image.url }}"
-              alt="{{ recipe.title }} Image"
-            />
+            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
             <div class="content-categorie">
               <h4>{{ recipe.title }}</h4>
             </div>
@@ -148,15 +97,9 @@
       </div>
       {% elif forloop.counter == 2 %}
       <div class="col-md-3">
-        <a
-          href="{% url 'recipe_detail' recipe.slug %}"
-          aria-label="Go to the recipe detail page"
-        >
+        <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
           <div class="content-img">
-            <img
-              src="{{ recipe.featured_image.url }}"
-              alt="{{ recipe.title }} Image"
-            />
+            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
             <div class="content-categorie">
               <h4>{{ recipe.title }}</h4>
             </div>
@@ -165,15 +108,9 @@
       </div>
       {% elif forloop.counter == 3 %}
       <div class="col-md-3">
-        <a
-          href="{% url 'recipe_detail' recipe.slug %}"
-          aria-label="Go to the recipe detail page"
-        >
+        <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
           <div class="content-img">
-            <img
-              src="{{ recipe.featured_image.url }}"
-              alt="{{ recipe.title }} Image"
-            />
+            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
             <div class="content-categorie">
               <h4>{{ recipe.title }}</h4>
             </div>
@@ -182,15 +119,9 @@
       </div>
       {% elif forloop.counter == 4 %}
       <div class="col-md-3">
-        <a
-          href="{% url 'recipe_detail' recipe.slug %}"
-          aria-label="Go to the recipe detail page"
-        >
+        <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
           <div class="content-img">
-            <img
-              src="{{ recipe.featured_image.url }}"
-              alt="{{ recipe.title }} Image"
-            />
+            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
             <div class="content-categorie">
               <h4>{{ recipe.title }}</h4>
             </div>
@@ -204,47 +135,36 @@
 
 <!-- CONTENT SECTION 2 (UNDER 991px)-->
 <section id="home-content-2" class="content">
-    <h2 class="title">Our Latest Recepies</h2>
-    <div class="container">
-      <div class="row">
-        {% for recipe in recipe_list %} {% if forloop.counter == 2 %}
-        <div class="col-md-6">
-          <a
-            href="{% url 'recipe_detail' recipe.slug %}"
-            aria-label="Go to the recipe detail page"
-          >
-            <div class="content-img">
-              <img
-                src="{{ recipe.featured_image.url }}"
-                alt="{{ recipe.title }} Image"
-              />
-              <div class="content-categorie">
-                <h4>{{ recipe.title }}</h4>
-              </div>
+  <h2 class="title">Our Latest Recepies</h2>
+  <div class="container">
+    <div class="row">
+      {% for recipe in recipe_detail %} {% if forloop.counter == 2 %}
+      <div class="col-md-6">
+        <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
+          <div class="content-img">
+            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
+            <div class="content-categorie">
+              <h4>{{ recipe.title }}</h4>
             </div>
-          </a>
-        </div>
-        {% else %}
-        <div class="col-md-6">
-          <a
-            href="{% url 'recipe_detail' recipe.slug %}"
-            aria-label="Go to the recipe detail page"
-          >
-            <div class="content-img">
-              <img
-                src="{{ recipe.featured_image.url }}"
-                alt="{{ recipe.title }} Image"
-              />
-              <div class="content-categorie">
-                <h4>{{ recipe.title }}</h4>
-              </div>
-            </div>
-          </a>
-        </div>
-        {% endif %} {% endfor %}
+          </div>
+        </a>
       </div>
+      {% else %}
+      <div class="col-md-6">
+        <a href="{% url 'recipe_detail' recipe.slug %}" aria-label="Go to the recipe detail page">
+          <div class="content-img">
+            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} Image" />
+            <div class="content-categorie">
+              <h4>{{ recipe.title }}</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endif %} {% endfor %}
     </div>
-  </section>
+  </div>
+</section>
 <!-- CONTENT SECTION -->
+
 
 {% endblock content %}
