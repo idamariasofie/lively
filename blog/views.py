@@ -5,7 +5,12 @@ from .models import Recipe
 from .forms import CommentForm
 
 def home(request):
-    return render(request, 'blog/home.html')
+    recipes = Recipe.objects.all()
+
+    # For debugging purposes, print the number of recipes
+    print(f"Number of recipes: {recipes.count()}")
+
+    return render(request, 'blog/home.html', {'recipe_detail': recipes})
 
 def about(request):
     return render(request, 'blog/about.html')
@@ -21,8 +26,13 @@ class PostList(generic.ListView):
     template_name = "blog/home.html"
     paginate_by = 6
 
+class DetailView(generic.DetailView):
+    model = Recipe
+    template_name = "blog/recipe_detail.html"
+
 def recipe_detail(request):
-    queryset = Recipe.objects.filter(status=1)
+    queryset = Recipe.objects.filter(status=1).order_by('-created_on')
+    template_name = 'blog/recipe_detail.html'
     post = queryset.first() 
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
