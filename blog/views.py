@@ -4,13 +4,22 @@ from django.contrib import messages
 from .models import Recipe
 from .forms import CommentForm
 
-def home(request):
-    recipes = Recipe.objects.all()
+class PostList(generic.ListView):
+    model = Recipe
+    template_name = "blog/home.html"
+    paginate_by = 6
 
-    # For debugging purposes, print the number of recipes
-    print(f"Number of recipes: {recipes.count()}")
+    def get_queryset(self):
+        return Recipe.objects.all().order_by("-created_on")
 
-    return render(request, 'blog/home.html', {'recipe_detail': recipes})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(f"Number of recipes: {self.get_queryset().count()}")
+        return context
+
+class DetailView(generic.DetailView):
+    model = Recipe
+    template_name = "blog/recipe_detail.html"
 
 def about(request):
     return render(request, 'blog/about.html')
@@ -21,19 +30,8 @@ def blog_page(request):
 def contact(request):
     return render(request, 'blog/contact.html')
 
-class PostList(generic.ListView):
-    queryset = Recipe.objects.all().order_by("-created_on")
-    template_name = "blog/home.html"
-    paginate_by = 6
-
-class DetailView(generic.DetailView):
-    model = Recipe
-    template_name = "blog/recipe_detail.html"
-
-def recipe_detail(request):
-    queryset = Recipe.objects.filter(status=1).order_by('-created_on')
-    template_name = 'blog/recipe_detail.html'
-    post = queryset.first() 
+def recipe_detail(request, slug=None):
+    post = get_object_or_404(Recipe, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
 
@@ -61,3 +59,4 @@ def recipe_detail(request):
             "comment_form": comment_form,
         },
     )
+
