@@ -3,8 +3,8 @@ from .views import PostList, DetailView, about, blog_page, contact, recipe_detai
 
 urlpatterns = [
     path('', PostList.as_view(), name='home'),
+    path('recipe/<slug:slug>/', recipe_detail, name='recipe_detail'),
     path('about/', about, name='about'),
-    path('blog/', blog_page, name='blog_page'),
+    path('blog/', blog_page, name='blog'),
     path('contact/', contact, name='contact'),
-    path('recipes/<slug:slug>/', DetailView.as_view(), name='recipe_detail'),
 ]
