@@ -7,6 +7,16 @@ STATUS = ((0, "Draft"), (1, "Published"))
 User = get_user_model()
 
 # Create your models here.
+class Profile(models.Model):
+    """
+    Model for user profil
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.user.username}  Profile'
+
+
 class Category(models.Model):
     """
     Model for category
