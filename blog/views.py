@@ -28,7 +28,8 @@ def about(request):
     return render(request, 'blog/about.html')
 
 def blog_page(request):
-    return render(request, 'blog/blog_page.html')
+    recipes = Recipe.objects.all()
+    return render(request, 'blog/blog.html', {'recipes': recipes})
 
 def contact(request):
     return render(request, 'blog/contact.html')
