@@ -1,94 +1,28 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
 
 <!-- SUB HERO SECTION -->
-<div
-  class="hero-bg-setup"
-  style="
-          background-image: url('{% static 'images/epicurrence-MtT0MMBT1Ws-unsplash.webp' %}');
-          height: 80vh;
-        "
-      >
+<div class="hero-bg-setup"
+  style="background-image: url('{% static 'images/epicurrence-MtT0MMBT1Ws-unsplash.webp' %}');
+          height: 80vh;">
   <div class="sub-hero-content">
     <h1 class="hero-center w-bg w-bg-h1">Contact Us</h1>
     <p class="hero-center w-bg w-bg-p">
-      If you have any questions or just want to say hi, please send us an e-mail to hello@livelyblog.com or use the contact form below. 
+      If you have any questions or just want to say hi, please send us an e-mail to <a href="mailto:hello@livelyblog.com">hello@livelyblog.com</a> or use the contact form below.
     </p>
   </div>
 </div>
 <!-- END OF SUB HERO -->
 
 <!-- CONTACT SECTION -->
+<h2>Contact Us</h2>
+<form method="post" action="{% url 'contact' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit">Submit</button>
+</form>
 
-          <!--{% if name %}
-          <h4 class="email-sent-message alert-success">
-            Thanks for your email {{ name}}.<br />
-            We will contact you as soon as possible!
-          </h4>
-          {% endif %}-->
-          <h4 id="email_alert" class="color-trans">..</h4>
-        </div>
-      </div>
-      <div class="col-md-8">
-        <!-- contact form -->
-        <form
-          action="{% url 'contact' %}"
-          onsubmit="return sendMail(this);"
-          class="row g-3"
-        >
-          {% csrf_token %}
-          <div class="col-md-6">
-            <label for="name" class="form-label">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              name="name"
-              required
-            />
-          </div>
-          <div class="col-md-6">
-            <label for="surname" class="form-label">Surname</label>
-            <input
-              type="text"
-              class="form-control"
-              id="surname"
-              name="surname"
-              required
-            />
-          </div>
-          <div class="col-md-6">
-            <label for="subject" class="form-label">Subject</label>
-            <input
-              type="text"
-              class="form-control"
-              id="subject"
-              name="subject"
-            />
-          </div>
-          <div class="col-md-6">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" />
-          </div>
-          <div class="col-md-12">
-            <label for="message" class="form-label">Message</label>
-            <textarea
-              class="form-control"
-              id="message"
-              rows="5"
-              name="message"
-              cols="40"
-              required
-            ></textarea>
-          </div>
-          <div class="col-12">
-            <button type="submit" class="btn btn-contact">Send</button>
-          </div>
-        </form>
-        <!-- end of contact form -->
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END OF CONTACT SECTION -->
-
-{% endblock content %}
+{% endblock %}

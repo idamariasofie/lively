@@ -3,6 +3,7 @@ from django.views import generic
 from django.contrib import messages
 from .models import Recipe
 from .forms import CommentForm
+from .forms import ContactForm
 
 class PostList(generic.ListView):
     model = Recipe
@@ -29,10 +30,31 @@ def about(request):
 
 def blog_page(request):
     recipes = Recipe.objects.all()
-    return render(request, 'blog/blog.html', {'recipes': recipes})
+    return render(request, 'blog/blog_page.html', {'recipes': recipes})
 
 def contact(request):
-    return render(request, 'blog/contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Get form data
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+
+            # Prepare email content
+            email_content = render_to_string('email/contact_email.txt', {'name': name, 'email': email, 'message': message})
+
+            # Send email
+            email = EmailMessage(subject, email_content, to=['your@email.com'])
+            email.send()
+
+            messages.success(request, 'Your message has been sent. Thank you!')
+            return redirect('contact') 
+    else:
+        form = ContactForm()
+
+    return render(request, 'blog/contact.html', {'form': form})
 
 def recipe_detail(request, slug=None):
     post = get_object_or_404(Recipe, slug=slug)
