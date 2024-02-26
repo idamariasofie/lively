@@ -39,7 +39,7 @@ class Recipe(models.Model):
         return self.likes.count()
 
     def get_absolute_url(self):
-        return reverse('recipe_detail', kwargs={'slug': self.slug})
+        return reverse('recipe_detail', args=[str(self.slug)])
 
     def save(self, *args, **kwargs):
         if not self.slug:

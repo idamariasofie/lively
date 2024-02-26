@@ -24,7 +24,7 @@
         <div class="col-md-4">
           <div class="card mb-4">
             <div class="card-body">
-              <h5 class="card-title">{{ recipe.title }}</h5>
+              <h5 class="card-title"><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a></h5>
               <p class="card-text">{{ recipe.description }}</p>
               <!-- Add more details as needed -->
             </div>
@@ -34,6 +34,7 @@
     </div>
   </div>
   <!-- END OF CONTENT BLOG SECTION 1 -->
+
   <!-- PAGINATION SECTION -->
   {% if is_paginated %}
   <nav aria-label="Page navigation">
