@@ -1,52 +1,36 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
 <!-- HERO SECTION -->
-<div
-  class="hero-bg-setup"
-  style="
-    background-image: url('{% static 'images/epicurrence-MtT0MMBT1Ws-unsplash.webp' %}');
-    height: 70vh;
-  "
->
+<div class="hero-bg-setup" style="background-image: url('{% static 'images/epicurrence-MtT0MMBT1Ws-unsplash.webp' %}'); height: 70vh;">
   <div class="sub-hero-content">
     <h1 class="hero-center w-bg w-bg-h1">About Lively</h1>
     <p class="hero-center w-bg w-bg-p">
-      We want to help you feel energized and vibrant. You see, it’s possible to
-      wake up with some pep in the morning and have the energy to “do it all”
-      day. 
+      We want to help you feel energized and vibrant. It’s possible to wake up with pep in the morning and have the energy to “do it all” day.
     </p>
   </div>
 </div>
 <!-- END OF SUB HERO -->
+
 <!-- ABOUT SECTION -->
 <section id="about">
-  <h1 class="title">Living in balance and feeling energized every day</h1>
+  <h1 class="title text-center mb-4">Living in balance and feeling energized every day</h1>
   <div class="container box-shadow">
     <div class="row">
       <div class="col-md-4">
-    
+        <img src="{% static 'images/brooke-lark-jUPOXXRNdcA-unsplash.webp' %}" alt="Your Image Alt Text" class="img-fluid">
+        <!-- Add more images or additional content here -->
       </div>
       <div class="col-md-8">
         <h3 class="sub-title">Get to know us</h3>
         <p class="mt-3 text-justify">
-        We transform lives for a living… every single day. We do this by
-        offering plant-based recipes, meal plans, cookbooks, and experiences
-        that teach determined people like you how to fuel your passion. We’re
-        a “for-profit company” that also creates an enormous amount of
-        life-changing resources free of charge. It’s an honor to guide and
-        support your wellness journey!</br></br>
-        I started blending a daily smoothie with spinach (aka: a green smoothie) for my family, wondering if the health claims
-        were legit. I quickly noticed I had more energy and didn’t need so much coffee. I was also staying full and using them
-        as meals. Even the kids enjoyed them… and never seemed to get sick.</br></br>
-        
-        For my family, green smoothies were the “gateway drug” to a healthier life. Within a few weeks of drinking them, I was a
-        different person. I was actually eager to wake up in the morning, bike my son to preschool, and then head to the
-        playground with my daughter.
+          We transform lives for a living… every single day. We offer plant-based recipes, meal plans, cookbooks, and experiences that teach determined people like you how to fuel your passion. We’re a “for-profit company” that also creates an enormous amount of life-changing resources free of charge. It’s an honor to guide and support your wellness journey!
         </p>
+        <!-- Add more text or sections as needed -->
       </div>
     </div>
   </div>
 </section>
 <!-- END ABOUT SECTION -->
+
 
 {% endblock content %}
