@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.template.loader import render_to_string 
 from django.views import generic
 from django.contrib import messages
 from .models import Recipe
-from .forms import CommentForm
-from .forms import ContactForm
+from .forms import CommentForm, ContactForm
+
 
 class PostList(generic.ListView):
     model = Recipe
@@ -42,15 +43,20 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
 
-            # Prepare email content
-            email_content = render_to_string('email/contact_email.txt', {'name': name, 'email': email, 'message': message})
+            # Simulate saving the form data or performing any other actions
+            # Instead of sending an email, you can print or log the data
+            print("Simulating contact form submission...\n")
+            print(f"Name: {name}")
+            print(f"Email: {email}")
+            print(f"Subject: {subject}")
+            print(f"Message: {message}")
 
-            # Send email
-            email = EmailMessage(subject, email_content, to=['your@email.com'])
-            email.send()
-
-            messages.success(request, 'Your message has been sent. Thank you!')
-            return redirect('contact') 
+            return render(request, 'blog/contact_success.html', {
+                'name': name,
+                'email': email,
+                'subject': subject,
+                'message': message,
+            })
     else:
         form = ContactForm()
 
