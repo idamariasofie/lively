@@ -9,6 +9,7 @@ from .forms import CommentForm, ContactForm
 class PostList(generic.ListView):
     model = Recipe
     template_name = "blog/home.html"
+    context_object_name = 'recipes'
     paginate_by = 6
 
     def get_queryset(self):
@@ -16,7 +17,7 @@ class PostList(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(f"Number of recipes: {self.get_queryset().count()}")
+        context['recipes'] = Recipe.objects.all().order_by("-created_on")
         return context
 
 class DetailView(generic.DetailView):

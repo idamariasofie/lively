@@ -16,8 +16,7 @@ class Category(models.Model):
 
 class Recipe(models.Model):
     """ A model for creating a recipe post """
-    author = models.ForeignKey(
-    User, on_delete=models.CASCADE, related_name="recipe_author")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_author")
     title = models.CharField(max_length=300, unique=True)
     slug = models.SlugField(max_length=300, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -25,15 +24,14 @@ class Recipe(models.Model):
     content = models.TextField()
     time_to_prepare = models.IntegerField(default=0)
     overview = models.TextField()
-    likes = models.ManyToManyField(
-        User, related_name='blogpost_like', blank=True)
+    likes = models.ManyToManyField(User, related_name='blogpost_like', blank=True)
     featured = models.BooleanField()
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
         """ Ordering blog posts by created on date """
         ordering = ['-created_on']
-    
+
     def __str__(self):
         return f"{self.title} | written by {self.author}"
 
@@ -41,9 +39,12 @@ class Recipe(models.Model):
         return self.likes.count()
 
     def get_absolute_url(self):
-        return reverse('recipe_detail', kwargs={
-            'id': self.id
-        })
+        return reverse('recipe_detail', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class Comment(models.Model):
