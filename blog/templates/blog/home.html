@@ -13,30 +13,26 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item bg-setup active" style="
-          background-image: url('{% static 'images/brooke-lark-jUPOXXRNdcA-unsplash.webp' %}');
+          background-image: url('{% static 'images/arek-adeoye-cHhNcqoj_7o-unsplash.webp' %}');
           height: 80vh;
         ">
         <div class="container">
           <div class="carousel-caption text-start">
-            <h2>Welcome to Lively</h2>
+            <h5><a href="{% url 'about' %}" style="text-decoration: none; color: inherit;">About us</a></h5>
+            <h1><a href="{% url 'about' %}" style="text-decoration: none; color: inherit;">Welcome to Lively</a></h1>
             <p>
-              Here we cook and eat healthy and simple vegetarian food with natural ingredients, whole grains, good fats,
-              fruit and vegetables.
-            </p>
-            <p>
-              <a class="btn btn-lg btn-primary mt-4 dis-small" href="{% url 'blog_page' %}"
-                aria-label="Go to the content home section dis-small">Discover Now</a>
+              Here we cook and eat healthy and simple vegetarian food with natural ingredients, 
+              whole grains, good fats, fruit and vegetables. Get to know us better here. 
             </p>
           </div>
         </div>
       </div>
-
       <div class="carousel-item bg-setup" style="
           background-image: url('{% static 'images/charlesdeluvio-Ms9xBg3Gtr8-unsplash.webp' %}');
           height: 80vh;
         ">
         <div class="container">
-          <div class="carousel-caption text-start">
+          <div class="carousel-caption text-center">
             <h2>MEAL REPLACEMENT SMOOTHIES</h2>
             <p>
               Slow down time with a delicious brunch loaded with plant-based
@@ -56,7 +52,7 @@
           height: 80vh;
         ">
         <div class="container">
-          <div class="carousel-caption text-start">
+          <div class="carousel-caption text-center">
             <h2>HEALTHY START OF THE DAY HAPPY LIFE</h2>
             <p>
               The more recipes you commit to making from our recipes, the better
@@ -82,20 +78,20 @@
 </section>
 <!-- END OF HERO SECTION -->
 
- <!-- CONTENT BLOG SECTION 1-->
- <div class="container">
+<!-- CONTENT BLOG SECTION 1-->
+<div class="container">
   <h2 class="mt-5">Latest Recipes</h2>
   <div class="row">
     {% for recipe in recipes %}
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h5 class="card-title"><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a></h5>
-            <p class="card-text">{{ recipe.description }}</p>
-            <!-- Add more details as needed -->
-          </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a></h5>
+          <p class="card-text">{{ recipe.description }}</p>
+          <!-- Add more details as needed -->
         </div>
       </div>
+    </div>
     {% endfor %}
   </div>
 </div>
