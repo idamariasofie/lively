@@ -13,4 +13,5 @@ urlpatterns = [
     path('recipes/<slug:slug>/', DetailView.as_view(), name='recipe_detail'),
     path("accounts/", include("allauth.urls")),
     path('summernote/', include('django_summernote.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
