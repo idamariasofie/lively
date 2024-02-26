@@ -13,7 +13,7 @@ class PostList(generic.ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        return Recipe.objects.all().order_by("-created_on")
+        return Recipe.objects.all().order_by("-created_on")[:self.paginate_by]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -25,7 +25,7 @@ class DetailView(generic.DetailView):
     template_name = "blog/recipe_detail.html"
 
 def categories(request):
-    return render(request, 'blog/categories.html')
+    return render(request, 'blog/home.html')
 
 def about(request):
     return render(request, 'blog/about.html')

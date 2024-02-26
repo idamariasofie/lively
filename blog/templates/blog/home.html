@@ -8,7 +8,6 @@
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
         aria-label="Slide 1"></button>
-
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
@@ -25,8 +24,8 @@
               fruit and vegetables.
             </p>
             <p>
-              <a class="btn btn-lg btn-primary mt-4 dis-small" href="{% url 'recipe_detail' slug=recipe.slug %}"
-                aria-label="Take me to your recipes">Discover Now</a>
+              <a class="btn btn-lg btn-primary mt-4 dis-small" href="{% url 'categories' %}"
+                aria-label="Go to the content home section dis-small">Discover Now</a>
             </p>
           </div>
         </div>
@@ -51,6 +50,7 @@
           </div>
         </div>
       </div>
+
       <div class="carousel-item bg-setup" style="
           background-image: url('{% static 'images/brooke-lark-W9OKrxBqiZA-unsplash.jpg' %}');
           height: 80vh;
@@ -63,7 +63,7 @@
               you will feel.
             </p>
             <p>
-              <a class="btn btn-lg btn-primary mt-4" href="{% url 'categories' %}"
+              <a class="btn btn-lg btn-primary mt-4 dis-small" href="{% url 'categories' %}"
                 aria-label="Go to the content home section dis-small">Discover Now</a>
             </p>
           </div>
@@ -82,20 +82,20 @@
 </section>
 <!-- END OF HERO SECTION -->
 
-<!-- CONTENT BLOG SECTION 1-->
-<div class="container">
+ <!-- CONTENT BLOG SECTION 1-->
+ <div class="container">
   <h2 class="mt-5">Latest Recipes</h2>
   <div class="row">
     {% for recipe in recipes %}
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title"><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a></h5>
-          <p class="card-text">{{ recipe.description }}</p>
-          <!-- Add more details as needed -->
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a></h5>
+            <p class="card-text">{{ recipe.description }}</p>
+            <!-- Add more details as needed -->
+          </div>
         </div>
       </div>
-    </div>
     {% endfor %}
   </div>
 </div>
