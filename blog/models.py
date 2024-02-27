@@ -26,7 +26,7 @@ class Category(models.Model):
 
 class Recipe(models.Model):
     """ A model for creating a recipe post """
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_author")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipes")
     title = models.CharField(max_length=300, unique=True)
     slug = models.SlugField(max_length=300, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -34,7 +34,7 @@ class Recipe(models.Model):
     content = models.TextField()
     time_to_prepare = models.IntegerField(default=0)
     overview = models.TextField()
-    likes = models.ManyToManyField(User, related_name='blogpost_like', blank=True)
+    likes = models.ManyToManyField(User, related_name='liked_recipes', blank=True)
     featured = models.BooleanField()
     status = models.IntegerField(choices=STATUS, default=0)
 
@@ -58,24 +58,19 @@ class Recipe(models.Model):
 
 
 class Comment(models.Model):
-    """ A model to allow and manage comments on recipe blog posts """
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE,
-                                related_name="comments", null=True)
-    name = models.CharField(max_length=80, default='')
-    email = models.EmailField(null=True, blank=True, default=None)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, null=True)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
     class Meta:
-        """ Ordering blog comments by created on date """
         ordering = ['-created_on']
-    
+
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
+        return f"Comment {self.body} by {self.user.username}"
 
     def get_absolute_url(self):
-        """Sets absolute URL"""
         return reverse('recipe_detail', args=[self.recipe.slug])
 
 
