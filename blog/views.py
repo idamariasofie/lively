@@ -4,7 +4,7 @@ from django.views import generic
 from django.contrib import messages
 from django.db.models import Q
 from .models import Recipe, Comment
-from .forms import CommentForm, ContactForm. SearchForm
+from .forms import CommentForm, ContactForm, SearchForm
 
 
 class PostList(generic.ListView):
