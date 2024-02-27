@@ -94,6 +94,8 @@ TEMPLATES = [
     },
 ]
 
+
+ACCOUNT_LOGIN_TEMPLATE = 'templates/account/login.html'
 WSGI_APPLICATION = 'my_project.wsgi.application'
 
 
