@@ -1,9 +1,9 @@
 {% load static %}
 
 {% url 'home' as home_url %}
-{% url 'recipes' as recipes_detail_url %}
+{% url 'recipes' as recipes_url %}
 {% url 'about' as about_url %}
-{% url 'blog' as blog_page_url %}
+{% url 'blog_page' as blog_page_url %}
 {% url 'contact' as contact_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
@@ -31,6 +31,9 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Add these styles for the search form and results -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
@@ -38,7 +41,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="thin">Lively</span></a></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="thin">Lively</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,49 +49,50 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
                             href="{% url 'home' %}">Home</a>
                     </li>
-                    <li class="nav-item"></li>
-                    <a class="nav-link {% if request.path == recipes_url %}active{% endif %}" aria-current="page"
-                        href="{% url 'recipes' %}">Recipes</a>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == about_url %}active" aria-current="page{% endif %}"
+                        <a class="nav-link {% if request.path == recipes_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'recipes' %}">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == about_url %}active{% endif %}" aria-current="page"
                             href="{% url 'about' %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == blog_page_url %}active" aria-current="page{% endif %}"
+                        <a class="nav-link {% if request.path == blog_page_url %}active{% endif %}" aria-current="page"
                             href="{% url 'blog_page' %}">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == contact_url %}active" aria-current="page{% endif %}"
+                        <a class="nav-link {% if request.path == contact_url %}active{% endif %}" aria-current="page"
                             href="{% url 'contact' %}">Contact</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
                             href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
                             href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
+                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
                             href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
-                    <span class="navbar-text text-muted">
-                    </span>
+                </ul>
+                <span class="navbar-text text-muted">
+                </span>
             </div>
         </div>
     </nav>
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-
-                </ul>
                 {% for message in messages %}
                 <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                     {{ message | safe }}
@@ -98,6 +102,7 @@
             </div>
         </div>
     </div>
+
     <main class="flex-shrink-0 main-bg">
         {% if user.is_authenticated %}
         <p class="text-end m-3">You are logged in as {{ user }}</p>
@@ -128,6 +133,3 @@
         </script>
     {% block extras %}
     {% endblock %}
-</body>
-
-</html>

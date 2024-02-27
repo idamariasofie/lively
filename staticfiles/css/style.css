@@ -1,5 +1,4 @@
 header {
-    background-image: staticfiles/images/brooke-lark-jUPOXXRNdcA-unsplash.webp;
     background-size: cover;
     background-position: center;
 }
@@ -163,4 +162,14 @@ body {
 
 .approval {
     color: rgb(222, 146, 168);
+}
+
+.navbar-form {
+    margin-right: 20px;
+}
+
+.search-results {
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 10px;
 }

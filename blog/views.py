@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template.loader import render_to_string 
 from django.views import generic
 from django.contrib import messages
+from django.db.models import Q
 from .models import Recipe, Comment
 from .forms import CommentForm, ContactForm
 
@@ -68,6 +69,14 @@ def recipe_detail(request, slug=None):
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
 
+    # Search functionality
+    query = request.GET.get('q')
+    if query:
+        comments = comments.filter(
+            Q(author__username__icontains=query) |
+            Q(content__icontains=query)
+        )
+
     if request.method == "POST" and request.user.is_authenticated:
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -90,6 +99,7 @@ def recipe_detail(request, slug=None):
             "comments": comments,
             "comment_count": comment_count,
             "comment_form": comment_form,
+            "query": query,
         },
     )
 
