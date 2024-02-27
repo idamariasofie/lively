@@ -13,7 +13,7 @@ class PostList(generic.ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        return Recipe.objects.all().order_by("-created_on")[:self.paginate_by]
+        return Recipe.objects.all().order_by("-created_on")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -68,7 +68,7 @@ def recipe_detail(request, slug=None):
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
 
-    if request.method == "POST":
+    if request.method == "POST" and request.user.is_authenticated:
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
