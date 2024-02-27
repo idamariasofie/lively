@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template.loader import render_to_string 
 from django.views import generic
 from django.contrib import messages
-from .models import Recipe
+from .models import Recipe, Comment
 from .forms import CommentForm, ContactForm
 
 
@@ -92,4 +92,21 @@ def recipe_detail(request, slug=None):
             "comment_form": comment_form,
         },
     )
+
+def add_comment(request, slug=None):
+    post = get_object_or_404(Recipe, slug=slug)
+
+    if request.method == "POST" and request.user.is_authenticated:
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment awaiting approval'
+            )
+
+    return redirect('recipe_detail', slug=slug)
 
