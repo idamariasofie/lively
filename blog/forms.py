@@ -1,6 +1,8 @@
 from .models import Comment, Recipe
 from django import forms
 
+class SearchForm(forms.Form):
+    search_query = forms.CharField(max_length=200, required=False)
 
 class CommentForm(forms.ModelForm):
     class Meta:

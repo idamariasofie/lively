@@ -4,7 +4,7 @@ from django.views import generic
 from django.contrib import messages
 from django.db.models import Q
 from .models import Recipe, Comment
-from .forms import CommentForm, ContactForm
+from .forms import CommentForm, ContactForm. SearchForm
 
 
 class PostList(generic.ListView):
@@ -120,3 +120,7 @@ def add_comment(request, slug=None):
 
     return redirect('recipe_detail', slug=slug)
 
+def search_results(request):
+    query = request.GET.get('search_query', '')
+    results = Recipe.objects.filter(title__icontains=query)
+    return render(request, 'blog/search_results.html', {'results': results, 'query': query})

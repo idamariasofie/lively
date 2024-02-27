@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostList, DetailView, about, blog_page, contact, recipe_detail, categories, add_comment
+from .views import PostList, DetailView, about, blog_page, contact, recipe_detail, categories, add_comment, search_results
 
 urlpatterns = [
     path('', PostList.as_view(), name='home'),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('blog/', blog_page, name='blog'),
     path('contact/', contact, name='contact'),
     path('recipes/<slug:slug>/add_comment/', add_comment, name='add_comment'),
+    path('search/', search_results, name='search_results'),
 ]
