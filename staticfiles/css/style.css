@@ -13,19 +13,17 @@ p {
 }
 
 /* Navigation Styles */
-.navbar-brand a {
+.navbar-brand a,
+.navbar-link {
     text-decoration: none;
     color: black;
+    font-family: 'Baskerville', serif;
 }
 
 /* Masthead Styles */
 .masthead-text {
     background-color: #445261;
     color: white;
-}
-
-.masthead-image:after {
-    /* Styles for masthead image overlay */
 }
 
 /* Profile Image Styles */
