@@ -1,0 +1,75 @@
+/* Global Styles */
+body, .main-bg, .light-bg, .dark-bg {
+    background-color: #F9FAFC;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Baskerville', serif;
+}
+
+p {
+    font-family: 'Lora', serif;
+}
+
+/* Navigation Styles */
+.navbar-brand a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Masthead Styles */
+.masthead-text {
+    background-color: #445261;
+    color: white;
+}
+
+.masthead-image:after {
+    /* Styles for masthead image overlay */
+}
+
+/* Profile Image Styles */
+.profile-image {
+    width: 75%;
+}
+
+/* Post Link Styles */
+.post-link, .page-link {
+    text-decoration: none;
+    color: #445261;
+}
+
+.post-link:hover, .page-link:hover {
+    color: #E84610;
+}
+
+/* Button Styles */
+.btn-signup, .btn-edit {
+    background-color: #188181;
+    color: #fff;
+}
+
+.btn-signup:hover, .btn-signup:active {
+    background-color: #fff;
+    color: #23BBBB;
+}
+
+/* Link Styles */
+.link {
+    color: #23BBBB;
+    text-decoration: none;
+}
+
+.link:hover, .link:active {
+    color: #445261;
+    text-decoration: underline;
+}
+
+/* Filter Headline Styles */
+.filter-headline {
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #188181;
+}
