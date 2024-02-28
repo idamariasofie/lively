@@ -1,6 +1,10 @@
 /* Global Styles */
-body, .main-bg, .light-bg, .dark-bg {
-    background-color: #F9FAFC;
+body, .main-bg, .light-bg, .dark-bg,
+.container, 
+.section-class, 
+.footer, 
+.main-bg {
+    background-color: #F9FAFC !important;
 }
 
 /* Typography */
@@ -14,10 +18,15 @@ p {
 
 /* Navigation Styles */
 .navbar-brand a,
-.navbar-link {
+.navbar-nav a.navbar-link {
     text-decoration: none;
     color: black;
-    font-family: 'Baskerville', serif;
+    font-family: 'Libre Baskerville', serif;
+}
+
+/* Ensure that the font-family is also applied to the active state */
+.navbar-link.active {
+    font-family: 'Libre Baskerville', serif;
 }
 
 /* Masthead Styles */
@@ -70,4 +79,13 @@ p {
     cursor: pointer;
     font-size: 1.5rem;
     color: #188181;
+}
+
+/* Lively Text Styles */
+.navbar-brand.lively-text {
+    text-align: center;
+}
+
+.navbar-brand.lively-text a {
+    font-size: 32px;
 }

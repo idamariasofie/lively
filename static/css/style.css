@@ -1,6 +1,10 @@
 /* Global Styles */
-body, .main-bg, .light-bg, .dark-bg {
-    background-color: #F9FAFC;
+body, .main-bg, .light-bg, .dark-bg,
+.container, 
+.section-class, 
+.footer, 
+.main-bg {
+    background-color: #F9FAFC !important;
 }
 
 /* Typography */
