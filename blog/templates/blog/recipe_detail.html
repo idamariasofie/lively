@@ -8,18 +8,18 @@
       <div class="row g-0">
         <div class="col-md-6 masthead-text">
           <h1 class="post-title">{{ recipe.title }}</h1>
-          <p class="post-subtitle">{{ recipe.author.username }} | {{ recipe.created_on }}</p>
+          <p class="post-subtitle">{{ recipe.author.username }} | {{ recipe.created_on|date:"F j, Y H:i" }}</p>
         </div>
         <div class="d-none d-md-block col-md-6 masthead-image">
-          <img src="{% static 'images/ella-olsson-oPBjWBCcAEo-unsplash.webp' %}" class="scale" alt="placeholder">
+          <img src="{% static 'images/ella-olsson-oPBjWBCcAEo-unsplash.webp' %}" class="img-fluid" alt="placeholder">
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container">
+  <div class="container mt-4">
     <div class="row">
-      <div class="col card mb-4 mt-3 left top">
+      <div class="col-md-8 card mb-4 mt-3 left top">
         <div class="card-body">
           <p class="card-text">{{ recipe.content}}</p>
         </div>
@@ -28,23 +28,25 @@
       <!-- Display Comments -->
       <div class="col-md-4 card mb-4 mt-3">
         <div class="card-body">
-          <h3>Comments:</h3>
+          <h3 class="mb-3">Comments:</h3>
 
           <!-- Display search query, if any -->
           {% if query %}
-            <p>Search results for: "{{ query }}"</p>
+            <p class="mb-3">Search results for: "{{ query }}"</p>
           {% endif %}
 
           {% for comment in comments %}
             <!-- Filter comments based on the search query -->
             {% if not query or query in comment.body %}
-              <p><strong>{{ comment.author.username }}</strong>: {{ comment.body }}</p>
+              <div class="comment mb-3">
+                <p><strong>{{ comment.author.username }}</strong>: {{ comment.body }}</p>
+              </div>
             {% endif %}
           {% endfor %}
 
           <!-- Creating New Comments -->
           {% if user.is_authenticated %}
-            <h3>Leave a comment:</h3>
+            <h3 class="mb-3">Leave a comment:</h3>
             <p>Posting as: {{ user.username }}</p>
             <form id="commentForm" method="post" style="margin-top: 1.3em;">
               {{ comment_form | crispy }}
@@ -52,7 +54,7 @@
               <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
             </form>
           {% else %}
-            <p>Log in to leave a comment</p>
+            <p class="mb-3">Log in to leave a comment</p>
           {% endif %}
         </div>
       </div>

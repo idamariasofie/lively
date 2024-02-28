@@ -1,34 +1,71 @@
-<!-- recipes/templates/recipes/recipe_list.html -->
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
+<!-- HERO SECTION -->
+<div class="hero-bg-setup d-flex align-items-center justify-content-center"
+  style="background-color: #fff; height: 70vh;">
+  <div class="text-center">
+    <h1 class="b-bg" style="font-size: 3rem;">Our Recipes</h1>
+  </div>
+</div>
+<!-- END OF HERO SECTION -->
 
-  <h1>Recipe List</h1>
-
-  {% for recipe in recipes %}
-    <div>
-      <h2><a href="{{ recipe.get_absolute_url }}">{{ recipe.title }}</a></h2>
-      <p>{{ recipe.overview }}</p>
+<!-- FILTER SECTION -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2 class="filter-headline" onclick="filterRecipes('All')">All</h2>
+      <h2 class="filter-headline" onclick="filterRecipes('Breakfasts')">Breakfasts</h2>
+      <!-- Add more categories as needed -->
     </div>
-  {% endfor %}
+  </div>
+</div>
+<!-- END OF FILTER SECTION -->
 
-  {% if is_paginated %}
-    <div class="pagination">
-      <span class="step-links">
-        {% if recipes.has_previous %}
-          <a href="?page=1">&laquo; first</a>
-          <a href="?page={{ recipes.previous_page_number }}">previous</a>
-        {% endif %}
 
-        <span class="current">
-          Page {{ recipes.number }} of {{ recipes.paginator.num_pages }}.
-        </span>
-
-        {% if recipes.has_next %}
-          <a href="?page={{ recipes.next_page_number }}">next</a>
-          <a href="?page={{ recipes.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-      </span>
+<!-- CONTENT BLOG SECTION -->
+<div class="container mx-auto mt-4">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for recipe in recipes %}
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a>
+          </h5>
+          <p class="card-text">{{ recipe.overview }}</p>
+          <p class="card-text"><small class="text-muted">Author: {{ recipe.author.username }}</small></p>
+          <p class="card-text"><small class="text-muted">Published on: {{ recipe.created_on }}</small></p>
+          <p class="card-text"><small class="text-muted">Likes: {{ recipe.number_of_likes }}</small></p>
+          <!-- Add more details as needed -->
+        </div>
+      </div>
     </div>
-  {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<!-- END OF CONTENT BLOG SECTION -->
 
+
+<!-- PAGINATION SECTION -->
+{% if is_paginated %}
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+      <a href="?page={{ page_obj.previous_page_number }}" aria-label="Go to the blog next page"
+        class="page-link">&laquo; PREV
+      </a>
+    </li>
+    {% endif %} {% if page_obj.has_next %}
+    <li class="page-item">
+      <a href="?page={{ page_obj.next_page_number }}" aria-label="Go to the blog back page" class="page-link">
+        NEXT &raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+<!-- END OF PAGINATION SECTION -->
+{% endif %}
 {% endblock %}

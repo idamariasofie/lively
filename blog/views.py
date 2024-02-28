@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.template.loader import render_to_string 
 from django.views import generic
 from django.contrib import messages
 from django.db.models import Q
+from django.views.generic.detail import DetailView
 from .models import Recipe, Comment
 from .forms import CommentForm, ContactForm, SearchForm
 
@@ -15,17 +15,14 @@ class RecipeListView(generic.ListView):
     def get_queryset(self):
         return Recipe.objects.filter(status=1).order_by("-created_on")
 
-class RecipeDetailView(generic.DetailView):
+class RecipeDetailView(DetailView):
     model = Recipe
-    template_name = "blog/recipe_detail.html"
-    context_object_name = 'post'
+    template_name = 'blog/recipe_detail.html'
+    context_object_name = 'recipe'  
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = self.object.comments.filter(approved=True).order_by("-created_on")
-        context['comment_count'] = context['comments'].count()
-        context['comment_form'] = CommentForm()
-        context['query'] = self.request.GET.get('q', '')
+        context['comments'] = Comment.objects.filter(recipe=self.object, approved=True)
         return context
 
 def home(request):
@@ -35,9 +32,6 @@ def home(request):
 def blog_page(request):
     recipes = Recipe.objects.filter(status=1).order_by("-created_on")
     return render(request, 'blog/blog_page.html', {'recipes': recipes})
-
-def categories(request):
-    return render(request, 'blog/home.html')
 
 def about(request):
     return render(request, 'blog/about.html')
