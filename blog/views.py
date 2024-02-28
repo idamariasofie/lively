@@ -6,34 +6,37 @@ from django.db.models import Q
 from .models import Recipe, Comment
 from .forms import CommentForm, ContactForm, SearchForm
 
-
-class PostList(generic.ListView):
+class RecipeListView(generic.ListView):
     model = Recipe
-    template_name = "blog/home.html"
+    template_name = "blog/recipe_list.html"
     context_object_name = 'recipes'
     paginate_by = 6
 
     def get_queryset(self):
-        return Recipe.objects.all().order_by("-created_on")
+        return Recipe.objects.filter(status=1).order_by("-created_on")
+
+class RecipeDetailView(generic.DetailView):
+    model = Recipe
+    template_name = "blog/recipe_detail.html"
+    context_object_name = 'post'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['recipes'] = Recipe.objects.all().order_by("-created_on")
+        context['comments'] = self.object.comments.filter(approved=True).order_by("-created_on")
+        context['comment_count'] = context['comments'].count()
+        context['comment_form'] = CommentForm()
+        context['query'] = self.request.GET.get('q', '')
         return context
 
-class DetailView(generic.DetailView):
-    model = Recipe
-    template_name = "blog/recipe_detail.html"
+def blog_page(request):
+    recipes = Recipe.objects.filter(status=1).order_by("-created_on")
+    return render(request, 'blog/blog_page.html', {'recipes': recipes})
 
 def categories(request):
     return render(request, 'blog/home.html')
 
 def about(request):
     return render(request, 'blog/about.html')
-
-def blog_page(request):
-    recipes = Recipe.objects.all()
-    return render(request, 'blog/blog_page.html', {'recipes': recipes})
 
 def contact(request):
     if request.method == 'POST':
