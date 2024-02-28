@@ -1,3 +1,13 @@
+/* Use Baskerville for headlines */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Baskerville', serif;
+}
+
+/* Use Lora for text */
+p {
+    font-family: 'Lora', serif;
+}
+
 header {
     background-image: staticfiles/images/brooke-lark-jUPOXXRNdcA-unsplash.webp;
     background-size: cover;
