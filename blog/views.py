@@ -28,6 +28,10 @@ class RecipeDetailView(generic.DetailView):
         context['query'] = self.request.GET.get('q', '')
         return context
 
+def home(request):
+    recipes = Recipe.objects.filter(status=1).order_by("-created_on")
+    return render(request, 'blog/home.html', {'recipes': recipes})
+
 def blog_page(request):
     recipes = Recipe.objects.filter(status=1).order_by("-created_on")
     return render(request, 'blog/blog_page.html', {'recipes': recipes})

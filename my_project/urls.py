@@ -1,17 +1,20 @@
 from django.contrib import admin
 from django.urls import path, include
 from home import views as index_views
-from blog.views import PostList, DetailView, about, blog_page, contact, recipe_detail, search_results
+from blog.views import RecipeListView, RecipeDetailView, about, blog_page, contact, add_comment, search_results, home 
 
 urlpatterns = [
     path('about/', about, name='about'),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
-    path('', PostList.as_view(), name='home'),
-    path('recipes/', PostList.as_view(), name='recipes'), 
-    path('blog/', blog_page, name='blog_page'),
+    path('', home, name='home'),  
     path('contact/', contact, name='contact'),
-    path('recipes/<slug:slug>/', DetailView.as_view(), name='recipe_detail'),
-    path('search_results/', search_results, name='search_results'), 
+    path('search_results/', search_results, name='search_results'),
     path('summernote/', include('django_summernote.urls')),
+
+    path('blog/', blog_page, name='blog_page'),
+    path('recipes/', RecipeListView.as_view(), name='recipes'),
+    path('recipes/<slug:slug>/', RecipeDetailView.as_view(), name='recipe_detail'),
+    path('recipes/<slug:slug>/add_comment/', add_comment, name='add_comment'),
+    path('blog/', include('blog.urls')), 
 ]
