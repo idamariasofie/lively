@@ -4,7 +4,7 @@ body, .main-bg, .light-bg, .dark-bg,
 .section-class, 
 .footer, 
 .main-bg {
-    background-color: #F9FAFC !important;
+    background-color: #F9FAFC;
 }
 
 /* Typography */
@@ -24,7 +24,6 @@ p {
     font-family: 'Libre Baskerville', serif;
 }
 
-/* Ensure that the font-family is also applied to the active state */
 .navbar-link.active {
     font-family: 'Libre Baskerville', serif;
 }

@@ -64,8 +64,9 @@ def contact(request):
 
     return render(request, 'blog/contact.html', {'form': form})
 
-def recipe_detail(request, slug=None):
-    post = get_object_or_404(Recipe, slug=slug)
+def recipe_detail(request, slug):
+    queryset = Recipe.objects.filter(status=1)
+    post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
 
