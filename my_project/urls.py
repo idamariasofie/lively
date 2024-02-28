@@ -12,7 +12,6 @@ urlpatterns = [
     path('search_results/', search_results, name='search_results'),
     path('summernote/', include('django_summernote.urls')),
 
-    path('blog/', blog_page, name='blog_page'),
     path('recipes/', RecipeListView.as_view(), name='recipes'),
     path('recipes/<slug:slug>/', RecipeDetailView.as_view(), name='recipe_detail'),
     path('recipes/<slug:slug>/add_comment/', add_comment, name='add_comment'),
