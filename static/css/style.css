@@ -88,3 +88,8 @@ p {
 .navbar-brand.lively-text a {
     font-size: 32px;
 }
+
+/* Spacer Styles */
+.spacer {
+    margin-top: 20px; 
+}

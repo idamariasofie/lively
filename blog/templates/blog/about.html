@@ -1,36 +1,71 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
 
 <!-- HERO SECTION -->
-<div class="hero-bg-setup" style="background-image: url('{% static 'images/epicurrence-MtT0MMBT1Ws-unsplash.webp' %}'); height: 70vh;">
+<div class="hero-bg-setup" style="background-color: #f78da7;">
   <div class="sub-hero-content">
-    <h1 class="hero-center w-bg w-bg-h1">About Lively</h1>
-    <p class="hero-center w-bg w-bg-p">
-      We want to help you feel energized and vibrant. It’s possible to wake up with pep in the morning and have the energy to “do it all” day.
-    </p>
   </div>
 </div>
 <!-- END OF SUB HERO -->
 
-<!-- ABOUT SECTION -->
-<section id="about">
-  <h1 class="title text-center mb-4">Living in balance and feeling energized every day</h1>
+<!-- Spacer for space between hero and content -->
+<div class="spacer"></div>
+
+<!-- ABOUT US SECTION -->
+<section id="about-us">
   <div class="container box-shadow">
     <div class="row">
-      <div class="col-md-4">
-        <img src="{% static 'images/brooke-lark-jUPOXXRNdcA-unsplash.webp' %}" alt="Your Image Alt Text" class="img-fluid">
-        <!-- Add more images or additional content here -->
-      </div>
-      <div class="col-md-8">
-        <h3 class="sub-title">Get to know us</h3>
+      <div class="col-md-8 offset-md-2 text-center">
+        <img src="{% static 'images/pexels-sam-lion-5709267.jpg' %}" alt="Welcome Image" class="img-fluid">
+        <h1 class="sub-title mt-3">About Us</h1>
         <p class="mt-3 text-justify">
-          We transform lives for a living… every single day. We offer plant-based recipes, meal plans, cookbooks, and experiences that teach determined people like you how to fuel your passion. We’re a “for-profit company” that also creates an enormous amount of life-changing resources free of charge. It’s an honor to guide and support your wellness journey!
+          Welcome to Lively, where our love for vibrant, wholesome food meets our passion for sharing inspiring
+          stories. Lively was born out of a desire to celebrate the beauty of vegetarian cuisine and the joy of
+          connecting with our food.
+
+          Our journey began with Liv's exploration of vegetarianism, driven by a quest for seasonal and easy recipes.
+          What started as a personal culinary adventure quickly transformed into a platform for sharing our love for
+          delicious, plant-based meals.
+
+          At Lively, we believe in the power of food to tell a story. Each recipe is a chapter in our culinary
+          narrative, celebrating the flavors of fresh, natural ingredients. From the kitchen to your table, we invite
+          you to join us on a journey of taste, color, and creativity.
+
+          Now, let's dive into the vibrant story behind Lively Kitchen Tales:
         </p>
-        <!-- Add more text or sections as needed -->
       </div>
     </div>
+
+    <!-- Q&A Section in Columns -->
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <h3>Interviewer: Liv, your blog has evolved into a haven for lively, vegetarian recipes. Can you share the story behind the name change to "Lively Kitchen Tales"?</h3>
+        <p>Liv: Absolutely! Lively Kitchen Tales represents the heart and soul of our culinary adventures. We wanted a name that captured the vibrant energy we infuse into our vegetarian recipes. Each dish has its own lively tale, and the blog is a collection of those stories.</p>
+
+        <h3>Interviewer: What sparked your journey into vegetarianism and the creation of your blog?</h3>
+        <p>Liv: My journey into vegetarianism began when I decided to embrace a meat-free lifestyle. I craved easy, delicious recipes that celebrated seasonal ingredients. That's when the idea for the blog was born – a place to share my discoveries and inspire others to explore the world of wholesome, plant-based meals.</p>
+
+        <h3>Interviewer: Can you elaborate on the lively aspect of your cooking philosophy?</h3>
+        <p>Liv: Certainly! Lively cooking is all about infusing energy into our meals. It's about celebrating the vibrant colors, flavors, and textures of fresh produce. We believe in variety and the joy that comes from eating nutritious food. The name change to Lively Kitchen Tales reflects our commitment to creating dishes that are not only healthy but also bursting with life.</p>
+      </div>
+      <div class="col-md-6">
+        <h3>Interviewer: How do you and David divide responsibilities in your kitchen?</h3>
+        <p>Liv: David is the creative force behind the scenes. He takes on the roles of food stylist and photographer, bringing our recipes to life visually. Meanwhile, I focus on crafting lively, tasty, and health-conscious vegetarian recipes. It's a dynamic partnership that ensures both the flavor and aesthetics of our dishes shine.</p>
+
+        <h3>Interviewer: What can your readers expect from Lively Kitchen Tales in terms of recipes and content?</h3>
+        <p>Liv: Lively Kitchen Tales is all about inspiring others to embrace a vibrant and wholesome approach to cooking. Readers can expect a diverse range of vegetarian recipes, each accompanied by a lively story. We want to show that cooking with natural ingredients can be not only nourishing but also incredibly enjoyable.</p>
+
+        <h3>Interviewer: Any advice for those looking to adopt a more lively and plant-based lifestyle?</h3>
+        <p>Liv: Embrace variety and enjoy the process of discovering new flavors. Lively cooking is about feeling good, not following strict rules. Experiment with different fruits, vegetables, grains, and spices. And most importantly, savor the joy that comes from creating and sharing delicious, plant-based meals.</p>
+
+        <h3>Interviewer: Thank you, Liv, for sharing the vibrant story behind Lively Kitchen Tales. We look forward to more lively recipes and tales from your kitchen!</h3>
+        <p>Liv: Thank you! I'm excited to continue this lively journey and share the joy of vegetarian cooking with everyone.</p>
+      </div>
+    </div>
+
   </div>
 </section>
-<!-- END ABOUT SECTION -->
-
+<!-- END ABOUT US SECTION -->
 
 {% endblock content %}
