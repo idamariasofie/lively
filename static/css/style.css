@@ -14,7 +14,7 @@ p {
 
 /* Navigation Styles */
 .navbar-brand a,
-.navbar-link {
+.navbar-nav a.navbar-link {
     text-decoration: none;
     color: black;
     font-family: 'Libre Baskerville', serif;
@@ -75,4 +75,13 @@ p {
     cursor: pointer;
     font-size: 1.5rem;
     color: #188181;
+}
+
+/* Lively Text Styles */
+.navbar-brand.lively-text {
+    text-align: center;
+}
+
+.navbar-brand.lively-text a {
+    font-size: 32px;
 }
