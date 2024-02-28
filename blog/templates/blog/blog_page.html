@@ -2,54 +2,68 @@
 {% load static %}
 
 {% block content %}
-  <!-- HERO SECTION -->
-  <div class="hero-bg-setup" style="background-color: #ffffff; height: 70vh;">
-    <div class="sub-hero-content text-center">
-      <h1 class="hero-center b-bg">The Blog</h1>
-      <p class="hero-center w-bg w-bg-p">
-        Welcome to the Lively blog. We will post recipes daily to keep you inspired and motivated to live a healthier life.
-      </p>
-    </div>
+<!-- HERO SECTION -->
+<div class="hero-bg-setup d-flex align-items-center justify-content-center"
+  style="background-color: #fff; height: 70vh;">
+  <div class="text-center">
+    <h1 class="b-bg" style="font-size: 3rem;">Our Recipes</h1>
   </div>
-  <!-- END OF HERO SECTION -->
+</div>
+<!-- END OF HERO SECTION -->
 
-  <!-- CONTENT BLOG SECTION -->
-  <div class="container mx-auto mt-4">
-    <h2 class="text-center mb-4">Latest Recipes</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      {% for recipe in recipes %}
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title"><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a></h5>
-              <p class="card-text">{{ recipe.description }}</p>
-              <!-- Add more details as needed -->
-            </div>
-          </div>
+<!-- FILTER SECTION -->
+<div class="container mt-4">
+  <div class="row">
+      <div class="col-md-12 text-center">
+          <h2 class="filter-headline" onclick="filterRecipes('All')">All</h2>
+          <h2 class="filter-headline" onclick="filterRecipes('Breakfasts')">Breakfasts</h2>
+          <h2 class="filter-headline" onclick="filterRecipes('Lunch')">Lunch</h2>
+          <h2 class="filter-headline" onclick="filterRecipes('Snacks')">Snacks</h2>
+          <h2 class="filter-headline" onclick="filterRecipes('Dinner')">Dinner</h2>
+          <h2 class="filter-headline" onclick="filterRecipes('SweetTreats')">Sweet Treats</h2>
+          <h2 class="filter-headline" onclick="filterRecipes('Bread')">Bread</h2>
+      </div>
+  </div>
+</div>
+<!-- END OF FILTER SECTION -->
+
+
+<!-- CONTENT BLOG SECTION -->
+<div class="container mx-auto mt-4">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for recipe in recipes %}
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a></h5>
+          <p class="card-text">{{ recipe.description }}</p>
+          <!-- Add more details as needed -->
         </div>
-      {% endfor %}
+      </div>
     </div>
+    {% endfor %}
   </div>
-  <!-- END OF CONTENT BLOG SECTION -->
+</div>
+<!-- END OF CONTENT BLOG SECTION -->
 
-  <!-- PAGINATION SECTION -->
-  {% if is_paginated %}
-  <nav aria-label="Page navigation">
-      <ul class="pagination justify-content-center">
-          {% if page_obj.has_previous %}
-          <li class="page-item">
-              <a href="?page={{ page_obj.previous_page_number }}" aria-label="Go to the blog next page"
-                  class="page-link">&laquo; PREV
-              </a>
-          </li>
-          {% endif %} {% if page_obj.has_next %}
-          <li class="page-item">
-              <a href="?page={{ page_obj.next_page_number }}" aria-label="Go to the blog back page" class="page-link">
-                  NEXT &raquo;</a>
-          </li>
-          {% endif %}
-      </ul>
-  </nav>
-  <!-- END OF PAGINATION SECTION -->
-  {% endif %}
+<!-- PAGINATION SECTION -->
+{% if is_paginated %}
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+      <a href="?page={{ page_obj.previous_page_number }}" aria-label="Go to the blog next page"
+        class="page-link">&laquo; PREV
+      </a>
+    </li>
+    {% endif %} {% if page_obj.has_next %}
+    <li class="page-item">
+      <a href="?page={{ page_obj.next_page_number }}" aria-label="Go to the blog back page" class="page-link">
+        NEXT &raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+<!-- END OF PAGINATION SECTION -->
+{% endif %}
 {% endblock %}

@@ -9,7 +9,7 @@ p {
 }
 
 header {
-    background-image: staticfiles/images/brooke-lark-jUPOXXRNdcA-unsplash.webp;
+    background-color: #F9FAFC;
     background-size: cover;
     background-position: center;
 }
@@ -26,17 +26,16 @@ body {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: #F9FAFC;
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #898989;
 }
 
 .main-bg {
     background-color: #F9FAFC;
 }
-
 
 
 .card {
@@ -183,4 +182,13 @@ body {
     font-weight: bold;
     color: #007bff;
     margin-top: 10px;
+}
+
+/* Filter Headlines */
+.filter-headline {
+    display: inline-block;
+    margin: 0 10px; 
+    cursor: pointer;
+    font-size: 1.5rem; 
+    color: #188181; 
 }
