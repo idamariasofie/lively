@@ -39,6 +39,7 @@ class Recipe(models.Model):
     likes = models.ManyToManyField(User, related_name='liked_recipes', blank=True)
     featured = models.BooleanField()
     status = models.IntegerField(choices=STATUS, default=0)
+    photo = models.ImageField(upload_to='recipe_photos/', blank=True, null=True)
 
     class Meta:
         """ Ordering blog posts by created on date """
