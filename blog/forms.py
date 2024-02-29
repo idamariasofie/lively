@@ -1,5 +1,10 @@
-from .models import Comment, Recipe
+from .models import Comment, Recipe, Profile
 from django import forms
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'profile_picture', 'display_name']
 
 class SearchForm(forms.Form):
     search_query = forms.CharField(max_length=200, required=False)

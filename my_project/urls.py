@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from home import views as index_views
-from blog.views import RecipeListView, RecipeDetailView, about, blog_page, contact, add_comment, search_results, home 
+from blog.views import RecipeListView, RecipeDetailView, about, blog_page, contact, add_comment, search_results, home, profile
 
 urlpatterns = [
     path('about/', about, name='about'),
@@ -16,4 +16,5 @@ urlpatterns = [
     path('recipes/<slug:slug>/', RecipeDetailView.as_view(), name='recipe_detail'),
     path('recipes/<slug:slug>/add_comment/', add_comment, name='add_comment'),
     path('blog/', include('blog.urls')), 
+    path('profile/', profile, name='profile'),
 ]

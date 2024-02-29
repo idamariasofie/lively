@@ -6,15 +6,17 @@ from django.urls import reverse
 STATUS = ((0, "Draft"), (1, "Published"))
 User = get_user_model()
 
-# Create your models here.
 class Profile(models.Model):
     """
-    Model for user profil
+    Model for user profile
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
+    display_name = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
-        return f'{self.user.username}  Profile'
+        return f'{self.user.username} Profile'
 
 
 class Category(models.Model):

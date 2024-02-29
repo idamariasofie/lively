@@ -1,10 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from django.db.models import Q
 from django.views.generic.detail import DetailView
-from .models import Recipe, Comment
-from .forms import CommentForm, ContactForm, SearchForm
+from .models import Recipe, Comment, Profile
+from .forms import CommentForm, ContactForm, SearchForm, ProfileForm
+
 
 class RecipeListView(generic.ListView):
     model = Recipe
@@ -24,6 +26,21 @@ class RecipeDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(recipe=self.object, approved=True)
         return context
+
+
+@login_required
+def profile(request):
+    user_profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=user_profile)
+
+    return render(request, 'profile.html', {'form': form})
 
 def home(request):
     recipes = Recipe.objects.filter(status=1).order_by("-created_on")
