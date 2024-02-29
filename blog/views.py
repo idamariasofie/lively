@@ -141,8 +141,8 @@ def add_comment(request, slug=None):
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
-            comment.author = request.user
-            comment.post = post
+            comment.user = request.user  
+            comment.recipe = post  
             comment.save()
             messages.add_message(
                 request, messages.SUCCESS,
