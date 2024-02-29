@@ -93,3 +93,8 @@ p {
 .spacer {
     margin-top: 20px; 
 }
+
+/* Black text / headlines */
+.custom-black-text {
+    color: black;
+  }
