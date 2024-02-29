@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, RecipeListView, RecipeDetailView, about, blog_page, contact, add_comment, search_results, profile
+from .views import home, RecipeListView, RecipeDetailView, about, blog_page, contact, add_comment, search_results, profile, delete_profile
 
 urlpatterns = [
     path('', home, name='home'),
@@ -9,5 +9,6 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('recipes/<slug:slug>/add_comment/', add_comment, name='add_comment'),
     path('search/', search_results, name='search_results'),
-    path('profile/', profile, name='profile'),  # Add this line for the profile view
+    path('profile/', profile, name='profile'),
+    path('profile/delete/', delete_profile, name='delete_profile'),
 ]

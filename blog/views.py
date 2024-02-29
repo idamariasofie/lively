@@ -27,7 +27,6 @@ class RecipeDetailView(DetailView):
         context['comments'] = Comment.objects.filter(recipe=self.object, approved=True)
         return context
 
-
 @login_required
 def profile(request):
     user_profile, created = Profile.objects.get_or_create(user=request.user)
@@ -36,11 +35,24 @@ def profile(request):
         form = ProfileForm(request.POST, request.FILES, instance=user_profile)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Profile updated successfully.')
             return redirect('profile')
     else:
         form = ProfileForm(instance=user_profile)
 
-    return render(request, 'profile.html', {'form': form})
+    return render(request, 'blog/profile.html', {'form': form})
+
+@login_required
+def delete_profile(request):
+    if request.method == 'POST':
+        try:
+            request.user.profile.delete()
+            messages.success(request, 'Profile deleted successfully.')
+            return redirect('home')
+        except Exception as e:
+            messages.error(request, f'Error deleting profile: {e}')
+
+    return render(request, 'blog/delete_profile.html')
 
 def home(request):
     recipes = Recipe.objects.filter(status=1).order_by("-created_on")
