@@ -79,11 +79,6 @@
                             style="font-family: 'Libre Baskerville', serif;">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-link {% if request.path == delete_profile_url %}active{% endif %}"
-                            aria-current="page" href="{% url 'delete_profile' %}"
-                            style="font-family: 'Libre Baskerville', serif;">Delete Profile</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link navbar-link {% if request.path == logout_url %}active{% endif %}"
                             aria-current="page" href="{% url 'account_logout' %}"
                             style="font-family: 'Libre Baskerville', serif;">Logout</a>
@@ -95,16 +90,13 @@
                     </li>
                     {% endif %}
                 </ul>
-                <span class="navbar-text text-muted">
-                </span>
+                <form class="d-flex" method="get" action="{% url 'search_results' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        name="search_query">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
-            <form class="d-flex" method="get" action="{% url 'search_results' %}">
-                {% csrf_token %}
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                    name="search_query">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
     </nav>
 
     <div class="container">
@@ -138,14 +130,10 @@
         </p>
         <p class="m-0 text-center text-white">
             Follow us:
-            <i class="fab fa-facebook-square ms-3"><a href="https://www.facebook.com/"
-                    target="_blank"></a></i>
-            <i class="fab fa-twitter-square ms-3"><a href="https://twitter.com/"
-                    target="_blank"></a></i>
-            <i class="fab fa-instagram-square ms-3"><a href="https://www.instagram.com/"
-                    target="_blank"></a></i>
-            <i class="fab fa-youtube-square ms-3"><a href="https://www.youtube.com/"
-                    target="_blank"></a></i>
+            <i class="fab fa-facebook-square ms-3"><a href="https://www.facebook.com/" target="_blank"></a></i>
+            <i class="fab fa-twitter-square ms-3"><a href="https://twitter.com/" target="_blank"></a></i>
+            <i class="fab fa-instagram-square ms-3"><a href="https://www.instagram.com/" target="_blank"></a></i>
+            <i class="fab fa-youtube-square ms-3"><a href="https://www.youtube.com/" target="_blank"></a></i>
         </p>
     </footer>
 

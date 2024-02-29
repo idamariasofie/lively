@@ -1,23 +1,25 @@
 {% extends 'base.html' %}
 
-{% load crispy_forms_tags %} <!-- Add this line at the top to load crispy forms tags -->
+{% load crispy_forms_tags %}
 
 {% block content %}
-  <div class="container mt-5">
+<div class="container mt-5">
     <h2>User Profile</h2>
     <div class="row">
-      <div class="col-md-6">
-        <h4>{{ user.username }}</h4>
-        <p>{{ user.profile.display_name }}</p>
-        <p>{{ user.profile.bio }}</p>
-      </div>
+        <div class="col-md-6">
+            <h4>{{ user.username }}</h4>
+            <p>{{ user.profile.display_name }}</p>
+            <p>{{ user.profile.bio }}</p>
+        </div>
     </div>
     <hr>
     <h3>Edit Profile</h3>
     <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form|crispy }} <!-- Use the crispy filter here -->
-      <button type="submit" class="btn btn-primary">Save Changes</button>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
-  </div>
+
+    <a href="{% url 'delete_profile' %}" class="btn btn-danger mt-3">Delete Profile</a>
+</div>
 {% endblock %}
