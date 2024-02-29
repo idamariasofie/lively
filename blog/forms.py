@@ -17,7 +17,7 @@ class CommentForm(forms.ModelForm):
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ('title', 'slug', 'comment_count', 'content', 'time_to_prepare', 'overview', 'likes', 'featured')
+        fields = ('title', 'slug', 'comment_count', 'content', 'time_to_prepare', 'overview', 'likes', 'featured', 'photo')
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100)
