@@ -62,7 +62,7 @@ p {
 
 /* Link Styles */
 .link {
-    color: #23BBBB;
+    color: black;
     text-decoration: none;
 }
 
@@ -98,3 +98,23 @@ p {
 .custom-black-text {
     color: black;
   }
+
+/* Recipe Link Styles */
+.card-title a {
+    color: black; 
+    text-decoration: none; 
+}
+
+.card-title a:hover {
+    color: #your_hover_color; 
+    text-decoration: none; 
+}
+
+/* Contact Form Styles */
+.contact-container {
+    max-width: 300px; 
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto; 
+}

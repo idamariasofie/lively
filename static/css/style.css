@@ -109,3 +109,12 @@ p {
     color: #your_hover_color; 
     text-decoration: none; 
 }
+
+/* Contact Form Styles */
+.contact-container {
+    max-width: 300px; 
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto; 
+}
