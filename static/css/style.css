@@ -118,3 +118,11 @@ p {
     box-sizing: border-box;
     margin: 0 auto; 
 }
+
+/* Opaque-box in hero section */
+.opaque-box {
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+    border-radius: 10px; 
+    color: white; 
+}

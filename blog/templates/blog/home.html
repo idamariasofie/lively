@@ -5,12 +5,7 @@
 <!-- Hero section -->
 <section id="hero">
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-        aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
+    <!-- ... (your existing code) ... -->
     <div class="carousel-inner">
       <div class="carousel-item bg-setup active" style="
           background-image: url('{% static 'images/brooke-lark-W9OKrxBqiZA-unsplash.jpg' %}');
@@ -18,12 +13,15 @@
         ">
         <div class="container">
           <div class="carousel-caption text-start">
-            <h5 class="custom-black-text"><a href="{% url 'about' %}" style="text-decoration: none;">About us</a></h5>
-            <h1 class="custom-black-text"><a href="{% url 'about' %}" style="text-decoration: none;">Welcome to Lively</a></h1>
-            <p class="custom-black-text">
-              Here we cook and eat healthy and simple vegetarian food with natural ingredients,
-              whole grains, good fats, fruit and vegetables. Get to know us better here.
-            </p>
+            <div class="opaque-box">
+              <h5 class="custom-black-text"><a href="{% url 'about' %}" style="text-decoration: none;">About us</a></h5>
+              <h1 class="custom-black-text"><a href="{% url 'about' %}" style="text-decoration: none;">Welcome to
+                  Lively</a></h1>
+              <p class="custom-black-text">
+                Here we cook and eat healthy and simple vegetarian food with natural ingredients,
+                whole grains, good fats, fruit and vegetables. Get to know us better here.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -52,7 +50,8 @@
         <div class="container">
           <div class="carousel-caption text-start">
             <h5><a href="{% url 'recipes' %}" style="text-decoration: none; color: inherit;">Sweet treats</a></h5>
-            <h1><a href="{% url 'recipes' %}" style="text-decoration: none; color: inherit;">Chocolate chip & tahini cookies</a></h1>
+            <h1><a href="{% url 'recipes' %}" style="text-decoration: none; color: inherit;">Chocolate chip & tahini
+                cookies</a></h1>
             <p>
               We are obsessed with this recipe, such a favorite.
             </p>
