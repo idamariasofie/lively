@@ -1,3 +1,9 @@
+/* Change arrow color on hover */
+#hero .carousel-control-prev:hover .carousel-control-prev-icon,
+#hero .carousel-control-next:hover .carousel-control-next-icon {
+    background-color: grey; 
+}
+
 /* Global Styles */
 body, .main-bg, .light-bg, .dark-bg,
 .container, 
@@ -27,10 +33,21 @@ h2 {
     text-decoration: none;
     color: black;
     font-family: 'Libre Baskerville', serif;
+    font-weight: 300;
 }
 
 .navbar-link.active {
     font-family: 'Libre Baskerville', serif;
+}
+
+/* Search Form Styles */
+.form-control {
+    font-weight: 300; 
+}
+
+/* Thin version of Libre Baskerville for navbar brand */
+.navbar-brand a.thin {
+    font-weight: 300; 
 }
 
 /* Masthead Styles */
@@ -51,20 +68,27 @@ h2 {
 }
 
 .post-link:hover, .page-link:hover {
-    color: grey; /* Changed hover color to grey */
+    color: grey; 
 }
 
 /* Button Styles */
-.btn-signup, .btn-edit {
-    background-color: #188181;
+.btn.btn-outline-success {
+    color: #188181;
+    border-color: black; 
+}
+
+.btn.btn-outline-success:hover,
+.btn.btn-outline-success:active {
     color: #fff;
+    background-color: transparent; 
+    border-color: grey; 
 }
 
 .btn-signup:hover,
 .btn-signup:active,
 .btn-edit:hover,
 .btn-edit:active {
-    background-color: grey; /* Changed hover color to grey */
+    background-color: grey; 
     color: #fff;
 }
 
@@ -115,7 +139,7 @@ h2 {
 }
 
 .card-title a:hover {
-    color: grey; /* Changed hover color to grey */
+    color: grey; 
     text-decoration: none; 
 }
 
@@ -134,21 +158,6 @@ h2 {
     padding: 20px;
     border-radius: 10px; 
     color: white; 
-}
-
-/* Mobile Styles */
-@media (max-width: 767px) {
-    /* Hide search bar when the hamburger icon is not expanded */
-    .navbar-collapse:not(.show) .form-control {
-        display: none;
-    }
-}
-
-/* Tablet Styles */
-@media (min-width: 768px) and (max-width: 991px) {
-    .navbar-collapse:not(.show) .form-control {
-        display: block;
-    }
 }
 
 /* Additions for Login, Signup, and Logout Pages */
@@ -172,20 +181,6 @@ input {
     box-sizing: border-box;
 }
 
-button {
-    background-color: #188181;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover,
-button:active {
-    background-color: grey; /* Changed hover color to grey */
-    color: #fff;
-}
-
 /* Spacer Styles */
 .spacer {
     margin-top: 20px;
@@ -200,8 +195,8 @@ button:active {
 
 .link:hover,
 .link:active {
-    color: grey; /* Changed hover color to grey */
-    text-decoration: underline;
+    color: grey; 
+    text-decoration: none;
 }
 
 /* Mobile Styles */
@@ -209,5 +204,12 @@ button:active {
     /* Hide search bar when the hamburger icon is not expanded */
     .navbar-collapse:not(.show) .form-control {
         display: none;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-collapse:not(.show) .form-control {
+        display: block;
     }
 }

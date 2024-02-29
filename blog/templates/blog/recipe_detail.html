@@ -11,7 +11,12 @@
         <p class="post-subtitle">{{ recipe.author.username }} | {{ recipe.created_on|date:"F j, Y H:i" }}</p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
-        <img src="{% static 'images/ella-olsson-oPBjWBCcAEo-unsplash.webp' %}" class="img-fluid" alt="placeholder">
+        {% if recipe.photo %}
+        <img src="{{ recipe.photo.url }}" class="img-fluid" alt="{{ recipe.title }}">
+        {% else %}
+        <!-- Provide a fallback image if there is no photo -->
+        <img src="{% static 'images/brooke-lark-W9OKrxBqiZA-unsplash.webp' %}" class="img-fluid" alt="placeholder">
+        {% endif %}
       </div>
     </div>
   </div>
