@@ -46,7 +46,7 @@ p {
 }
 
 .post-link:hover, .page-link:hover {
-    color: #E84610;
+    color: grey; /* Changed hover color to grey */
 }
 
 /* Button Styles */
@@ -55,9 +55,12 @@ p {
     color: #fff;
 }
 
-.btn-signup:hover, .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+.btn-signup:hover,
+.btn-signup:active,
+.btn-edit:hover,
+.btn-edit:active {
+    background-color: grey; /* Changed hover color to grey */
+    color: #fff;
 }
 
 /* Link Styles */
@@ -66,8 +69,9 @@ p {
     text-decoration: none;
 }
 
-.link:hover, .link:active {
-    color: #445261;
+.link:hover,
+.link:active {
+    color: grey; /* Changed hover color to grey */
     text-decoration: underline;
 }
 
@@ -97,7 +101,7 @@ p {
 /* Black text / headlines */
 .custom-black-text {
     color: black;
-  }
+}
 
 /* Recipe Link Styles */
 .card-title a {
@@ -106,7 +110,7 @@ p {
 }
 
 .card-title a:hover {
-    color: #your_hover_color; 
+    color: grey; /* Changed hover color to grey */
     text-decoration: none; 
 }
 
@@ -135,17 +139,70 @@ p {
     }
 }
 
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-collapse:not(.show) .form-control {
+        display: block;
+    }
+}
+
+/* Additions for Login, Signup, and Logout Pages */
+
+/* Form Styles */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Baskerville', serif;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #188181;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover,
+button:active {
+    background-color: grey; /* Changed hover color to grey */
+    color: #fff;
+}
+
+/* Spacer Styles */
+.spacer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Link Styles */
+.link {
+    color: black;
+    text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+    color: grey; /* Changed hover color to grey */
+    text-decoration: underline;
+}
+
 /* Mobile Styles */
 @media (max-width: 767px) {
     /* Hide search bar when the hamburger icon is not expanded */
     .navbar-collapse:not(.show) .form-control {
         display: none;
-    }
-}
-
-/* Tablet Styles */
-@media (min-width: 768px) and (max-width: 991px) {
-    .navbar-collapse:not(.show) .form-control {
-        display: block;
     }
 }
