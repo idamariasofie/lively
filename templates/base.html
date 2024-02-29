@@ -8,6 +8,8 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
+{% url 'profile' as profile_url %}
+{% url 'delete_profile' as delete_profile_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -72,6 +74,16 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
+                        <a class="nav-link navbar-link {% if request.path == profile_url %}active{% endif %}"
+                            aria-current="page" href="{% url 'profile' %}"
+                            style="font-family: 'Libre Baskerville', serif;">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-link {% if request.path == delete_profile_url %}active{% endif %}"
+                            aria-current="page" href="{% url 'delete_profile' %}"
+                            style="font-family: 'Libre Baskerville', serif;">Delete Profile</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link navbar-link {% if request.path == logout_url %}active{% endif %}"
                             aria-current="page" href="{% url 'account_logout' %}"
                             style="font-family: 'Libre Baskerville', serif;">Logout</a>
@@ -126,10 +138,14 @@
         </p>
         <p class="m-0 text-center text-white">
             Follow us:
-            <i class="fab fa-facebook-square ms-3"><a href="https://www.facebook.com/" target="_blank"></a></i>
-            <i class="fab fa-twitter-square ms-3"><a href="https://twitter.com/" target="_blank"></a></i>
-            <i class="fab fa-instagram-square ms-3"><a href="https://www.instagram.com/" target="_blank"></a></i>
-            <i class="fab fa-youtube-square ms-3"><a href="https://www.youtube.com/" target="_blank"></a></i>
+            <i class="fab fa-facebook-square ms-3"><a href="https://www.facebook.com/"
+                    target="_blank"></a></i>
+            <i class="fab fa-twitter-square ms-3"><a href="https://twitter.com/"
+                    target="_blank"></a></i>
+            <i class="fab fa-instagram-square ms-3"><a href="https://www.instagram.com/"
+                    target="_blank"></a></i>
+            <i class="fab fa-youtube-square ms-3"><a href="https://www.youtube.com/"
+                    target="_blank"></a></i>
         </p>
     </footer>
 
