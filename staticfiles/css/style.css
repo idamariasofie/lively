@@ -118,3 +118,34 @@ p {
     box-sizing: border-box;
     margin: 0 auto; 
 }
+
+/* Opaque-box in hero section */
+.opaque-box {
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+    border-radius: 10px; 
+    color: white; 
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+    /* Hide search bar when the hamburger icon is not expanded */
+    .navbar-collapse:not(.show) .form-control {
+        display: none;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+    /* Hide search bar when the hamburger icon is not expanded */
+    .navbar-collapse:not(.show) .form-control {
+        display: none;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-collapse:not(.show) .form-control {
+        display: block;
+    }
+}
