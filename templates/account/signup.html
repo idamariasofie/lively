@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Sign Up</h2>
+  <p>Create a new account to join Lively. If you already have an account, you can <a href="{% url 'account_login' %}">log in here</a>.</p>
+
+  <form method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    
+    <label for="id_username">Username:</label>
+    {{ form.username }}
+    
+    <label for="id_email">Email:</label>
+    {{ form.email }}
+    
+    <label for="id_password1">Password:</label>
+    {{ form.password1 }}
+    
+    <label for="id_password2">Confirm Password:</label>
+    {{ form.password2 }}
+
+    <button type="submit">Sign Up</button>
+  </form>
+{% endblock %}
