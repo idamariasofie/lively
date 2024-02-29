@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Sign In</h2>
-  <p>Welcome back to Lively. To leave a comment or like a post, please log in. If you have not created an account yet, then <a href="{% url 'account_signup' %}">sign up here</a>.</p>
+<h2>Sign In</h2>
+<p>Welcome back to Lively. To leave a comment or like a post, please log in. If you have not created an account yet,
+  then <a href="{% url 'account_signup' %}">sign up here</a>.</p>
 
-  <form method="post" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    
-    <label for="id_login">Username:</label>
-    {{ form.login }}
-    
-    <label for="id_password">Password:</label>
-    {{ form.password }}
+<form method="post" action="{% url 'account_login' %}">
+  {% csrf_token %}
 
-    <button type="submit">Log In</button>
-  </form>
+  <label for="id_login">Username:</label>
+  {{ form.login }}
+
+  <label for="id_password">Password:</label>
+  {{ form.password }}
+
+  <button class="btn btn-outline-success" type="submit">Log In</button>
+</form>
 {% endblock %}

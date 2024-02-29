@@ -7,7 +7,7 @@
   <form method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
     
-    <button type="submit">Yes, Logout</button>
-    <a href="{% url 'home' %}"><button type="button">No, Go Back</button></a>
+    <button class="btn btn-outline-success" type="submit">Yes, Logout</button>
+    <a href="{% url 'home' %}"><button class="btn btn-outline-success" type="submit">No, Go Back</button></a>
   </form>
 {% endblock %}

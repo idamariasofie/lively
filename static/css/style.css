@@ -16,6 +16,11 @@ p {
     font-family: 'Lora', serif;
 }
 
+/* Center text in login, logout, and signup pages */
+h2 {
+    text-align: center;
+}
+
 /* Navigation Styles */
 .navbar-brand a,
 .navbar-nav a.navbar-link {
@@ -90,7 +95,7 @@ p {
 }
 
 .navbar-brand.lively-text a {
-    font-size: 32px;
+    font-size: 48px;
 }
 
 /* Spacer Styles */
