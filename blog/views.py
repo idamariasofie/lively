@@ -20,11 +20,11 @@ class RecipeListView(generic.ListView):
 class RecipeDetailView(DetailView):
     model = Recipe
     template_name = 'blog/recipe_detail.html'
-    context_object_name = 'recipe'  
+    context_object_name = 'recipe' 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = Comment.objects.filter(recipe=self.object, approved=True)
+        context['comments'] = self.object.comment_set.filter(approved=True).order_by("-created_on")
         return context
 
 @login_required
@@ -95,10 +95,10 @@ def contact(request):
     return render(request, 'blog/contact.html', {'form': form})
 
 def recipe_detail(request, slug):
-    queryset = Recipe.objects.filter(status=1)
-    post = get_object_or_404(queryset, slug=slug)
-    comments = post.comments.all().order_by("-created_on")
-    comment_count = post.comments.filter(approved=True).count()
+    recipe = get_object_or_404(Recipe, slug=slug)
+    print(f"Recipe Slug: {recipe.slug}")  # Add this line
+    comments = recipe.comments.all()
+    comment_form = CommentForm()
 
     # Search functionality
     query = request.GET.get('q')
@@ -112,8 +112,8 @@ def recipe_detail(request, slug):
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
-            comment.author = request.user
-            comment.post = post
+            comment.user = request.user
+            comment.recipe = recipe
             comment.save()
             messages.add_message(
                 request, messages.SUCCESS,
@@ -126,9 +126,8 @@ def recipe_detail(request, slug):
         request,
         "blog/recipe_detail.html",
         {
-            "post": post,
+            "recipe": recipe,
             "comments": comments,
-            "comment_count": comment_count,
             "comment_form": comment_form,
             "query": query,
         },

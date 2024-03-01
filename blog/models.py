@@ -25,6 +25,21 @@ class Category(models.Model):
     """
     title = models.CharField(max_length=300, unique=True)
     
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
+    recipe = models.ForeignKey('blog.Recipe', on_delete=models.CASCADE, null=True)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return f"Comment {self.body} by {self.user.username}"
+
+    def get_absolute_url(self):
+        return reverse('recipe_detail', args=[self.recipe.slug])
 
 class Recipe(models.Model):
     """ A model for creating a recipe post """
@@ -32,6 +47,7 @@ class Recipe(models.Model):
     title = models.CharField(max_length=300, unique=True)
     slug = models.SlugField(max_length=300, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
+    comments = models.ManyToManyField(Comment, related_name='comments', blank=True)
     comment_count = models.IntegerField(default=0)
     content = models.TextField()
     time_to_prepare = models.IntegerField(default=0)
@@ -58,24 +74,6 @@ class Recipe(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
-
-class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, null=True)
-    body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
-
-    class Meta:
-        ordering = ['-created_on']
-
-    def __str__(self):
-        return f"Comment {self.body} by {self.user.username}"
-
-    def get_absolute_url(self):
-        return reverse('recipe_detail', args=[self.recipe.slug])
-
 
 class About(models.Model):
     title = models.CharField(max_length=200)
