@@ -1,20 +1,28 @@
 /* Change arrow color on hover */
 #hero .carousel-control-prev:hover .carousel-control-prev-icon,
 #hero .carousel-control-next:hover .carousel-control-next-icon {
-    background-color: grey; 
+    background-color: grey;
 }
 
 /* Global Styles */
-body, .main-bg, .light-bg, .dark-bg,
-.container, 
-.section-class, 
-.footer, 
+body,
+.main-bg,
+.light-bg,
+.dark-bg,
+.container,
+.section-class,
+.footer,
 .main-bg {
     background-color: #F9FAFC;
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Baskerville', serif;
 }
 
@@ -42,12 +50,12 @@ h2 {
 
 /* Search Form Styles */
 .form-control {
-    font-weight: 300; 
+    font-weight: 300;
 }
 
 /* Thin version of Libre Baskerville for navbar brand */
 .navbar-brand a.thin {
-    font-weight: 300; 
+    font-weight: 300;
 }
 
 /* Masthead Styles */
@@ -62,33 +70,35 @@ h2 {
 }
 
 /* Post Link Styles */
-.post-link, .page-link {
+.post-link,
+.page-link {
     text-decoration: none;
     color: #445261;
 }
 
-.post-link:hover, .page-link:hover {
-    color: grey; 
+.post-link:hover,
+.page-link:hover {
+    color: grey;
 }
 
 /* Button Styles */
 .btn.btn-outline-success {
     color: #188181;
-    border-color: black; 
+    border-color: black;
 }
 
 .btn.btn-outline-success:hover,
 .btn.btn-outline-success:active {
     color: #fff;
-    background-color: transparent; 
-    border-color: grey; 
+    background-color: transparent;
+    border-color: grey;
 }
 
 .btn-signup:hover,
 .btn-signup:active,
 .btn-edit:hover,
 .btn-edit:active {
-    background-color: grey; 
+    background-color: grey;
     color: #fff;
 }
 
@@ -100,7 +110,8 @@ h2 {
 
 .link:hover,
 .link:active {
-    color: grey; /* Changed hover color to grey */
+    color: grey;
+    /* Changed hover color to grey */
     text-decoration: underline;
 }
 
@@ -124,7 +135,7 @@ h2 {
 
 /* Spacer Styles */
 .spacer {
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 /* Black text / headlines */
@@ -134,30 +145,30 @@ h2 {
 
 /* Recipe Link Styles */
 .card-title a {
-    color: black; 
-    text-decoration: none; 
+    color: black;
+    text-decoration: none;
 }
 
 .card-title a:hover {
-    color: grey; 
-    text-decoration: none; 
+    color: grey;
+    text-decoration: none;
 }
 
 /* Contact Form Styles */
 .contact-container {
-    max-width: 300px; 
+    max-width: 300px;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 /* Opaque-box in hero section */
 .opaque-box {
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
-    border-radius: 10px; 
-    color: white; 
+    border-radius: 10px;
+    color: white;
 }
 
 /* Additions for Login, Signup, and Logout Pages */
@@ -195,12 +206,13 @@ input {
 
 .link:hover,
 .link:active {
-    color: grey; 
+    color: grey;
     text-decoration: none;
 }
 
 /* Mobile Styles */
 @media (max-width: 767px) {
+
     /* Hide search bar when the hamburger icon is not expanded */
     .navbar-collapse:not(.show) .form-control {
         display: none;
@@ -211,5 +223,21 @@ input {
 @media (min-width: 768px) and (max-width: 991px) {
     .navbar-collapse:not(.show) .form-control {
         display: block;
+    }
+}
+
+/* Compter screens */
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .navbar-expand-lg .navbar-nav {
+        margin-right: auto;
+    }
+
+    .navbar-expand-lg .form-inline {
+        margin-left: 10px;
     }
 }
