@@ -14,7 +14,7 @@
         {% if recipe.photo %}
         <img src="{{ recipe.photo.url }}" class="img-fluid" alt="{{ recipe.title }}">
         {% else %}
-        <!-- Provide a fallback image if there is no photo -->
+        <!-- Fallback image if there is no photo -->
         <img src="{% static 'images/brooke-lark-W9OKrxBqiZA-unsplash.webp' %}" class="img-fluid" alt="placeholder">
         {% endif %}
       </div>

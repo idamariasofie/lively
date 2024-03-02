@@ -4,7 +4,7 @@
 {% block content %}
 <!-- HERO SECTION -->
 <div class="hero-bg-setup d-flex align-items-center justify-content-center"
-  style="background-color: #fff; height: 70vh;">
+  style="background-color: #f5eeec;  height: 70vh;">
   <div class="text-center">
     <h1 class="b-bg" style="font-size: 3rem;">Our Recipes</h1>
   </div>
@@ -16,13 +16,12 @@
   <div class="row">
     <div class="col-md-12 text-center">
       <h2 class="filter-headline custom-black-text " onclick="filterRecipes('All')">All</h2>
-      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Breakfasts')">Bread</h2>
+      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Bread')">Bread</h2>
       <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Breakfasts')">Breakfasts</h2>
-      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Breakfasts')">Lunch</h2>
-      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Breakfasts')">Salads</h2>
-      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Breakfasts')">Snacks</h2>
-      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Breakfasts')">Sweet treats</h2>
-      <!-- Add more categories as needed -->
+      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Lunch')">Lunch</h2>
+      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Salads')">Salads</h2>
+      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Snacks')">Snacks</h2>
+      <h2 class="filter-headline custom-black-text " onclick="filterRecipes('Sweet-treats')">Sweet treats</h2>
     </div>
   </div>
 </div>
@@ -43,7 +42,6 @@
           <p class="card-text"><small class="text-muted">Author: {{ recipe.author.username }}</small></p>
           <p class="card-text"><small class="text-muted">Published on: {{ recipe.created_on }}</small></p>
           <p class="card-text"><small class="text-muted">Likes: {{ recipe.number_of_likes }}</small></p>
-          <!-- Add more details as needed -->
         </div>
       </div>
     </div>

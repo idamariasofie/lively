@@ -1,24 +1,57 @@
 <!-- blog_page.html -->
-
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
-  <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <h1 class="mb-4">Blog Page</h1>
+<!-- HERO SECTION -->
+<div class="hero-bg-setup d-flex align-items-center justify-content-center"
+  style="background-color: #f5eeec;  height: 70vh;">
+  <div class="text-center">
+    <h1 class="b-bg" style="font-size: 3rem;">Blog Page</h1>
+  </div>
+</div>
 
-        {% for recipe in recipes %}
-          <div class="card mb-4">
-            <div class="card-body">
-              <h2 class="card-title"><a href="{{ recipe.get_absolute_url }}">{{ recipe.title }}</a></h2>
-              <p class="card-text">{{ recipe.overview }}</p>
-              <p class="card-text"><small class="text-muted">Posted on {{ recipe.created_on|date:"F d, Y" }}</small></p>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+<!-- CONTENT BLOG SECTION -->
+<div class="container mx-auto mt-4">
+  {% for recipe in recipes %}
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">
+        <a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a>
+      </h5>
+      <p class="card-text">{{ recipe.overview }}</p>
+      <p class="card-text"><small class="text-muted">Author: {{ recipe.author.username }}</small></p>
+      <p class="card-text"><small class="text-muted">Published on: {{ recipe.created_on }}</small></p>
+      <p class="card-text"><small class="text-muted">Likes: {{ recipe.number_of_likes }}</small></p>
     </div>
   </div>
+  {% endfor %}
+</div>
+<!-- END OF CONTENT BLOG SECTION -->
+
+<!-- PAGINATION SECTION -->
+{% if is_paginated %}
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+      <a href="?page={{ page_obj.previous_page_number }}" aria-label="Go to the blog next page"
+        class="page-link">&laquo; PREV
+      </a>
+    </li>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <li class="page-item">
+      <a href="?page={{ page_obj.next_page_number }}" aria-label="Go to the blog back page" class="page-link">
+        NEXT &raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+<!-- END OF PAGINATION SECTION -->
+{% endif %}
+
+</div>
+</div>
+</div>
 {% endblock %}

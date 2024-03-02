@@ -14,20 +14,22 @@
 
 <!-- CONTACT SECTION -->
 <div class="container">
-  <div class="sub-hero-content">
+  <div class="sub-hero-content text-center"> 
     <div class="spacer"></div>
-    <h1 class="hero-center w-bg w-bg-h1">Contact Us</h1>
-    <p class="hero-center w-bg w-bg-p">
+    <h1 class="hero-center w-bg w-bg-h1 mx-auto">Contact Us</h1> 
+    <p class="hero-center w-bg w-bg-p mx-auto"> 
       If you have any questions or just want to say hi, please send us an e-mail to <a
         href="mailto:hello@livelyblog.com">hello@livelyblog.com</a> or use the contact form below.
     </p>
-
-    <form method="post" action="{% url 'contact' %}">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button class="btn btn-outline-success" type="submit">Submit</button>
-    </form>
   </div>
+</div>
+
+<form method="post" action="{% url 'contact' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button class="btn btn-outline-success" type="submit">Submit</button>
+</form>
+</div>
 </div>
 <!-- END OF CONTACT SECTION -->
 
