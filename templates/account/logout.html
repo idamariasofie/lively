@@ -9,12 +9,16 @@
   </div>
 </div>
 <!-- END OF HERO SECTION -->
-<p>Are you sure you want to logout?</p>
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
+<!-- Logout section -->
+<div class="container mt-4 text-center">
+  <p>Are you sure you want to logout?</p>
+  <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
 
-  <button class="btn btn-outline-success" type="submit">Yes, Logout</button>
-  <a href="{% url 'home' %}"><button class="btn btn-outline-success" type="submit">No, Go Back</button></a>
-</form>
+    <button class="btn btn-outline-success" type="submit">Yes, Logout</button>
+  </form>
+  <a href="{% url 'home' %}" class="btn btn-outline-success">No, Go Back</a>
+</div>
+<!-- End of logout section -->
 {% endblock %}
