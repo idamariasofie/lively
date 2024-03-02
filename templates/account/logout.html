@@ -1,13 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Logout</h2>
-  <p>Are you sure you want to logout?</p>
+<!-- HERO SECTION -->
+<div class="hero-bg-setup d-flex align-items-center justify-content-center"
+  style="background-color: #f5eeec;  height: 70vh;">
+  <div class="text-center">
+    <h1 class="b-bg" style="font-size: 3rem;">Logout</h1>
+  </div>
+</div>
+<!-- END OF HERO SECTION -->
+<p>Are you sure you want to logout?</p>
 
-  <form method="post" action="{% url 'account_logout' %}">
-    {% csrf_token %}
-    
-    <button class="btn btn-outline-success" type="submit">Yes, Logout</button>
-    <a href="{% url 'home' %}"><button class="btn btn-outline-success" type="submit">No, Go Back</button></a>
-  </form>
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+
+  <button class="btn btn-outline-success" type="submit">Yes, Logout</button>
+  <a href="{% url 'home' %}"><button class="btn btn-outline-success" type="submit">No, Go Back</button></a>
+</form>
 {% endblock %}

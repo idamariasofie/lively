@@ -1,9 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Sign In</h2>
-<p>Welcome back to Lively. To leave a comment or like a post, please log in. If you have not created an account yet,
-  then <a href="{% url 'account_signup' %}">sign up here</a>.</p>
+<!-- HERO SECTION -->
+<div class="hero-bg-setup d-flex align-items-center justify-content-center"
+  style="background-color: #f5eeec;  height: 70vh;">
+  <div class="text-center">
+    <h1 class="b-bg" style="font-size: 3rem;">Sign In</h1>
+  </div>
+</div>
+<!-- END OF HERO SECTION -->
+
+<!-- Sign in form -->
+<div class="text-center"> 
+  <p>Welcome back to Lively. To leave a comment or like a post, please log in. If you have not created an account yet,
+    then <a href="{% url 'account_signup' %}">sign up here</a>.</p>
+</div>
 
 <form method="post" action="{% url 'account_login' %}">
   {% csrf_token %}
