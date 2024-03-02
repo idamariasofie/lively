@@ -12,12 +12,16 @@ class SearchForm(forms.Form):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('body',)
+        fields = ('body',) 
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['body'].widget.attrs['placeholder'] = 'Add your comment...'
 
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ('title', 'slug', 'comment_count', 'content', 'time_to_prepare', 'overview', 'likes', 'featured', 'photo')
+        fields = ['title', 'overview', 'content', 'status', 'photo']
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100)

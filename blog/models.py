@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 from django.urls import reverse
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -26,8 +25,8 @@ class Category(models.Model):
     title = models.CharField(max_length=300, unique=True)
     
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
-    recipe = models.ForeignKey('blog.Recipe', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=1)
+    recipe = models.ForeignKey('blog.Recipe', on_delete=models.CASCADE, null=True, default=None)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
@@ -36,14 +35,17 @@ class Comment(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return f"Comment {self.body} by {self.user.username}"
+        if self.user:
+            return f"Comment {self.body} by {self.user.username}"
+        else:
+            return f"Comment {self.body} by Unknown User"
 
     def get_absolute_url(self):
         return reverse('recipe_detail', args=[self.recipe.slug])
 
 class Recipe(models.Model):
     """ A model for creating a recipe post """
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipes")
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=300, unique=True)
     slug = models.SlugField(max_length=300, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -52,7 +54,6 @@ class Recipe(models.Model):
     content = models.TextField()
     time_to_prepare = models.IntegerField(default=0)
     overview = models.TextField()
-    likes = models.ManyToManyField(User, related_name='liked_recipes', blank=True)
     featured = models.BooleanField()
     status = models.IntegerField(choices=STATUS, default=0)
     photo = models.ImageField(upload_to='recipe_photos/', blank=True, null=True)
@@ -64,16 +65,8 @@ class Recipe(models.Model):
     def __str__(self):
         return f"{self.title} | written by {self.author}"
 
-    def number_of_likes(self):
-        return self.likes.count()
-
     def get_absolute_url(self):
-        return reverse('recipe_detail', args=[str(self.slug)])
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
+        return reverse('recipe_detail', kwargs={'slug': self.slug})
 
 class About(models.Model):
     title = models.CharField(max_length=200)

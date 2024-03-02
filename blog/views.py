@@ -96,9 +96,8 @@ def contact(request):
 
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
-    print(f"Recipe Slug: {recipe.slug}")  # Add this line
     comments = recipe.comments.all()
-    comment_form = CommentForm()
+    comment_form = CommentForm(user=request.user)  # Pass the user here
 
     # Search functionality
     query = request.GET.get('q')
@@ -109,7 +108,7 @@ def recipe_detail(request, slug):
         )
 
     if request.method == "POST" and request.user.is_authenticated:
-        comment_form = CommentForm(data=request.POST)
+        comment_form = CommentForm(user=request.user, data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.user = request.user
@@ -119,8 +118,6 @@ def recipe_detail(request, slug):
                 request, messages.SUCCESS,
                 'Comment awaiting approval'
             )
-
-    comment_form = CommentForm()
 
     return render(
         request,
@@ -133,22 +130,22 @@ def recipe_detail(request, slug):
         },
     )
 
-def add_comment(request, slug=None):
-    post = get_object_or_404(Recipe, slug=slug)
-
-    if request.method == "POST" and request.user.is_authenticated:
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.user = request.user  
-            comment.recipe = post  
-            comment.save()
-            messages.add_message(
-                request, messages.SUCCESS,
-                'Comment awaiting approval'
-            )
-
-    return redirect('recipe_detail', slug=slug)
+def add_comment(request, recipe_id):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if request.user.is_authenticated:
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.user = request.user
+                comment.recipe_id = recipe_id
+                comment.save()
+                messages.success(request, 'Your comment was added successfully.')
+            else:
+                messages.error(request, 'There was an error in your comment.')
+        else:
+            messages.error(request, 'You must be logged in to add a comment.')
+            return redirect('login.html') 
+    return redirect('recipe_detail', recipe_id=recipe_id)
 
 def search_results(request):
     query = request.GET.get('search_query', '')
