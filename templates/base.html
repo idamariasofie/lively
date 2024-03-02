@@ -90,7 +90,7 @@
                     </li>
                     {% endif %}
                 </ul>
-                <form class="d-flex" method="get" action="{% url 'search_results' %}">
+                <form class="d-flex my-2 my-lg-0 ms-auto" method="get" action="{% url 'search_results' %}">
                     {% csrf_token %}
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                         name="search_query">
