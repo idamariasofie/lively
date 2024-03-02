@@ -13,19 +13,23 @@
 
 <!-- CONTENT BLOG SECTION -->
 <div class="container mx-auto mt-4">
-  {% for recipe in recipes %}
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title">
-        <a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a>
-      </h5>
-      <p class="card-text">{{ recipe.overview }}</p>
-      <p class="card-text"><small class="text-muted">Author: {{ recipe.author.username }}</small></p>
-      <p class="card-text"><small class="text-muted">Published on: {{ recipe.created_on }}</small></p>
-      <p class="card-text"><small class="text-muted">Likes: {{ recipe.number_of_likes }}</small></p>
+  <div class="row">
+    {% for recipe in recipes %}
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a>
+          </h5>
+          <p class="card-text">{{ recipe.overview }}</p>
+          <p class="card-text"><small class="text-muted">Author: {{ recipe.author.username }}</small></p>
+          <p class="card-text"><small class="text-muted">Published on: {{ recipe.created_on }}</small></p>
+          <p class="card-text"><small class="text-muted">Likes: {{ recipe.number_of_likes }}</small></p>
+        </div>
+      </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
 <!-- END OF CONTENT BLOG SECTION -->
 

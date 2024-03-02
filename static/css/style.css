@@ -210,6 +210,23 @@ input {
     text-decoration: none;
 }
 
+/* Custom Styles for Carousel Caption */
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left; 
+    color: black; 
+}
+
+.carousel-caption a {
+    color: inherit;
+}
+
+.carousel-caption a:hover {
+    text-decoration: none;
+}
+
 /* Mobile Styles */
 @media (max-width: 767px) {
 
