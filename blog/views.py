@@ -9,6 +9,7 @@ from .models import Recipe, Comment, Profile
 from .forms import CommentForm, ContactForm, SearchForm, ProfileForm
 from django.contrib.auth.forms import UserCreationForm
 
+
 class RecipeListView(generic.ListView):
     model = Recipe
     template_name = "blog/recipe_list.html"
@@ -17,6 +18,7 @@ class RecipeListView(generic.ListView):
 
     def get_queryset(self):
         return Recipe.objects.filter(status=1).order_by("-created_on")
+
 
 class RecipeDetailView(DetailView):
     model = Recipe
@@ -27,6 +29,7 @@ class RecipeDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['comments'] = self.object.comment_set.filter(approved=True).order_by("-created_on")
         return context
+
 
 @login_required
 def profile(request):
@@ -43,6 +46,7 @@ def profile(request):
 
     return render(request, 'blog/profile.html', {'form': form})
 
+
 def signup_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -52,26 +56,29 @@ def signup_view(request):
             messages.success(request, 'Account created successfully! You are now logged in.')
             return redirect('home')
         else:
-            messages.error(request, 'Error creating account. Please correct the errors in the form.')
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'Error in {field}: {error}')
     else:
         form = UserCreationForm()
 
     return render(request, 'signup.html', {'form': form})
 
+
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
             auth_login(request, user)
             messages.success(request, 'Logged in successfully.')
-            return redirect('home') 
+            return redirect('home')
         else:
             messages.error(request, 'Invalid username or password. Please try again.')
+    else:
+        form = AuthenticationForm()
 
-    return render(request, 'login.html')
+    return render(request, 'login.html', {'form': form})
 
 
 @login_required
@@ -136,7 +143,7 @@ def contact(request):
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
     comments = recipe.comments.all()
-    comment_form = CommentForm(user=request.user) 
+    comment_form = CommentForm(user=request.user)
 
     # Search functionality
     query = request.GET.get('q')
@@ -180,16 +187,13 @@ def add_comment(request, recipe_id):
                 comment.recipe_id = recipe_id
                 comment.save()
                 messages.success(request, 'Your comment was added successfully.')
+                return redirect('recipe_detail', slug=comment.recipe.slug)
             else:
-                messages.error(request, 'There was an error in your comment.')
+                for field, errors in form.errors.items():
+                    for error in errors:
+                        messages.error(request, f'Error in {field}: {error}')
         else:
             messages.error(request, 'You must be logged in to add a comment.')
-            return redirect('login.html')
-    return redirect('recipe_detail', recipe_id=recipe_id)
+            return redirect('login')
 
-
-def search_results(request):
-    query = request.GET.get('search_query', '')
-    results = Recipe.objects.filter(title__icontains=query)
-    return render(request, 'blog/search_results.html', {'results': results, 'query': query})
-
+    return redirect('recipe_detail', slug=recipe_id)
