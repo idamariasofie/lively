@@ -27,7 +27,7 @@ p {
 /* Change arrow color on hover */
 #hero .carousel-control-prev:hover .carousel-control-prev-icon,
 #hero .carousel-control-next:hover .carousel-control-next-icon {
-    background-color: grey;
+    background-color: #e0e0e0;
 }
 
 /* Center text in login, logout, and signup pages */
@@ -63,16 +63,16 @@ h2 {
 /* Button style used throughout website */
 .btn.btn-outline-success:hover,
 .btn.btn-outline-success:active {
-    color: grey; 
+    color: #e0e0e0;
     background-color: transparent;
-    border-color: grey;
+    border-color: #e0e0e0;
 }
 
 .btn-signup:hover,
 .btn-signup:active,
 .btn-edit:hover,
 .btn-edit:active {
-    background-color: grey;
+    background-color: #e0e0e0;
     color: white;
 }
 
@@ -84,7 +84,7 @@ h2 {
 
 .link:hover,
 .link:active {
-    color: grey;
+    color: #e0e0e0;
     text-decoration: underline;
 }
 
@@ -117,7 +117,7 @@ h2 {
 }
 
 .card-title a:hover {
-    color: grey;
+    color: #e0e0e0;
     text-decoration: none;
 }
 
@@ -163,7 +163,7 @@ input {
 
 .link:hover,
 .link:active {
-    color: grey;
+    color: #e0e0e0;
     text-decoration: none;
 }
 
