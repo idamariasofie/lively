@@ -28,7 +28,7 @@ were entered into the online checker and no errors were found in any of the cust
 
 Lighthouse was used to test Performance, Best Practices, Accessibility and SEO on Desktop.
 
-![lighthouse](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/ae4dced9-9b9d-4b9b-bef8-1ed556b16635)
+![lighthouse](assets/readme/screenshots/lighthouse.png)
 
 ### HTML Validation
 
@@ -36,8 +36,8 @@ Lighthouse was used to test Performance, Best Practices, Accessibility and SEO o
 
 ### CSS Validation
 
-![css-validator](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/ee36aef1-b379-41c6-bc51-5d932e4fe524)
-![css-validator-warning](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/cfd11df5-83a1-48b2-8d9a-e7162bb0110e)
+![css-validator](assets/readme/screenshots/w3c.png)
+
 
 ### JavaScript and jquery Validation
 
