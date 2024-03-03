@@ -16,6 +16,10 @@
       {% for recipe in recipes %}
         <div class="col-md-6 mb-4">
           <div class="card">
+            <!-- Check if the 'photo' attribute has a file before trying to display it -->
+            {% if recipe.photo %}
+              <img src="{{ recipe.photo.url }}" alt="{{ recipe.title }} Preview Image" class="card-img-top">
+            {% endif %}
             <div class="card-body">
               <h5 class="card-title">
                 <a href="{% url 'recipe_detail' slug=recipe.slug %}">{{ recipe.title }}</a>

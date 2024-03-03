@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Baskerville', serif;
+    font-family: 'Libre Baskerville', serif;
 }
 
 p {
@@ -41,29 +41,30 @@ h2 {
     text-decoration: none;
     color: black;
     font-family: 'Libre Baskerville', serif;
-    font-weight: 300;
+    font-weight: 100; 
 }
 
 .navbar-link.active {
     font-family: 'Libre Baskerville', serif;
+    font-weight: 100; 
 }
 
 /* Search Form Styles */
 .form-control {
-    font-weight: 300;
-    color: black; 
+    font-weight: 100; 
+    color: black;
 }
 
 /* Button Styles */
 .btn.btn-outline-success {
-    color: black; 
+    color: black;
     border-color: black;
 }
 
 /* Button style used throughout website */
 .btn.btn-outline-success:hover,
 .btn.btn-outline-success:active {
-    color: grey; 
+    color: grey;
     background-color: transparent;
     border-color: grey;
 }
@@ -139,7 +140,7 @@ form {
 label {
     display: block;
     margin-bottom: 5px;
-    font-family: 'Baskerville', serif;
+    font-family: 'Libre Baskerville', serif;
 }
 
 input {
@@ -172,8 +173,8 @@ input {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    text-align: left; 
-    color: black; 
+    text-align: left;
+    color: black;
 }
 
 .carousel-caption a {
@@ -186,7 +187,6 @@ input {
 
 /* Mobile Styles */
 @media (max-width: 767px) {
-
     /* Hide search bar when the hamburger icon is not expanded */
     .navbar-collapse:not(.show) .form-control {
         display: none;
@@ -200,7 +200,7 @@ input {
     }
 }
 
-/* Compter screens */
+/* Computer screens */
 @media (min-width: 992px) {
     .navbar-expand-lg .navbar-collapse {
         display: flex;
