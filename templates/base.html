@@ -5,7 +5,7 @@
 {% url 'about' as about_url %}
 {% url 'blog_page' as blog_page_url %}
 {% url 'contact' as contact_url %}
-{% url 'account_login' as login_url %}
+{% url 'login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 {% url 'profile' as profile_url %}
@@ -71,7 +71,7 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>

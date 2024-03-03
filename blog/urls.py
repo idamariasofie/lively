@@ -1,4 +1,6 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
+from allauth.account.views import SignupView
 from .views import (
     home,
     RecipeListView,
@@ -23,4 +25,7 @@ urlpatterns = [
     path('profile/delete/', delete_profile, name='delete_profile'),
     path('recipes/<slug:slug>/', RecipeDetailView.as_view(), name='recipe_detail'),
     path('recipes/', RecipeListView.as_view(), name='recipes'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('signup/', SignupView.as_view(), name='signup'),
 ]

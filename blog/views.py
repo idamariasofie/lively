@@ -1,13 +1,14 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.views.generic.detail import DetailView
 from django.db.models import Q
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login as auth_login
 from .models import Recipe, Comment, Profile
 from .forms import CommentForm, ContactForm, SearchForm, ProfileForm
-from django.contrib.auth.forms import UserCreationForm
 
 
 class RecipeListView(generic.ListView):
@@ -47,38 +48,32 @@ def profile(request):
     return render(request, 'blog/profile.html', {'form': form})
 
 
-def signup_view(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            auth_login(request, user)
-            messages.success(request, 'Account created successfully! You are now logged in.')
-            return redirect('home')
-        else:
-            for field, errors in form.errors.items():
-                for error in errors:
-                    messages.error(request, f'Error in {field}: {error}')
-    else:
-        form = UserCreationForm()
+class SignupView(generic.CreateView):
+    form_class = UserCreationForm
+    template_name = 'signup.html'
+    success_url = '/'
 
-    return render(request, 'signup.html', {'form': form})
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        auth_login(self.request, self.object)
+        messages.success(self.request, 'Account created successfully! You are now logged in.')
+        return response
+
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        for field, errors in form.errors.items():
+            for error in errors:
+                messages.error(self.request, f'Error in {field}: {error}')
+        return response
 
 
-def login_view(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            auth_login(request, user)
-            messages.success(request, 'Logged in successfully.')
-            return redirect('home')
-        else:
-            messages.error(request, 'Invalid username or password. Please try again.')
-    else:
-        form = AuthenticationForm()
+class LoginView(LoginView):
+    template_name = 'login.html'
 
-    return render(request, 'login.html', {'form': form})
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        messages.error(self.request, 'Invalid username or password. Please try again.')
+        return response
 
 
 @login_required
