@@ -181,6 +181,11 @@ input {
     text-decoration: none;
 }
 
+/* Footer Social Media Icons */
+.footer a i {
+    color: black;
+}
+
 /* Mobile Styles */
 @media (max-width: 767px) {
     /* Hide search bar when the hamburger icon is not expanded */
