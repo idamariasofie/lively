@@ -3,7 +3,7 @@
 {% block content %}
 <!-- HERO SECTION -->
 <div class="hero-bg-setup d-flex align-items-center justify-content-center"
-  style="background-color: #f5eeec;  height: 70vh;">
+  style="background-color: #f5eeec; height: 70vh;">
   <div class="text-center">
     <h1 class="b-bg" style="font-size: 3rem;">Sign In</h1>
   </div>
@@ -16,11 +16,19 @@
     then <a href="{% url 'account_signup' %}">sign up here</a>.</p>
 </div>
 
+{% if messages %}
+<div class="messages">
+  {% for message in messages %}
+  <p class="{{ message.tags }}">{{ message }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
 <form method="post" action="{% url 'account_login' %}">
   {% csrf_token %}
 
-  <label for="id_login">Username:</label>
-  {{ form.login }}
+  <label for="id_username">Username:</label>
+  {{ form.username }}
 
   <label for="id_password">Password:</label>
   {{ form.password }}
