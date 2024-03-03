@@ -86,7 +86,7 @@ I wanted Lively to have a warm yet clean aesthetic feeling with colorful food ph
 
 Due to the large hero sections with colorful photography, the overall design is clean yet elegant. Here is the color scheme:
 
-[![colors](assets/readme/screenshots/colors.png)](link_to_table_of_contents)
+[![colors](assets/readme/screenshots/colors.png)]
 
 ### [Fonts](https://github.com/idamariasofie/lively#fonts)
 
@@ -123,7 +123,7 @@ Lively follows Agile planning methods, using the [Github Projects Board](https:/
 
 Sprints were planned to achieve the MVP a month before the submission date of March 4, 2024.
 
-![Sprint Timetable](link_to_sprint_timetable_image)
+![Sprint Timetable](assets/readme/screenshots/sprint.png)
 
 # [User Stories](https://github.com/idamariasofie/lively#user-stories)
 
@@ -133,15 +133,15 @@ User stories and features are managed on [GitHub Projects](https://github.com/us
 
 Visitor user story
 
-ADD IMAGE
+![Visitoruserstory](assets/readme/screenshots/visitor-user.png)
 
 User profile
 
-ADD IMAGE 
+![Profileuserstory](assets/readme/screenshots/userprofile.png)
 
 Recipes
 
-ADD IMAGE
+![Profileuserstory](assets/readme/screenshots/recipes-user.png)
 
 # [Scope Plan](https://github.com/idamariasofie/lively#scope-plane)
 
@@ -162,23 +162,26 @@ Planning allowed for a balance between feasibility and satisfaction of assessmen
 
 ### Home Page Wireframes
 
-ADD IN IMAGE x 3
+![homewireframe](assets/readme/screenshots/wireframe-home.png)
+![homewireframe2](assets/readme/screenshots/wireframe-home-2.png)
+![footerwireframe](assets/readme/screenshots/wireframe-footer.png)
 
 Wireframes for the login/logout, sign up, and contact us pages maintain a similar design for consistency throughout the website.
 
 Sign Up Wireframe
 
-ADD IN IMAGE
+![signupwireframe](assets/readme/screenshots/wireframe-signup.png)
 
 ## [Database Schema - Entity Relationship Diagram](https://github.com/idamariasofie/lively#database-schema---entity-relationship-diagram)
 
-
 Entity Relationship Diagram (ERD) for Lively, displaying relationships between feature components within the database
+
+![erd](assets/readme/screenshots/erd.png)
 
 This ERD demonstrates how each feature interacts with each other and the connected PostgreSQL Database. Using Django's User Model, and Django AllAuth to carry out the user authentication. A user_id is created when the user registers with their username and email. 
 This allows the user to access and edit their profile, bio, image etc and add comments, when logged in. For future development, a weekly meal plan could be added and saved recipes, that could be accessed from the profile. 
 
-The Profile, Recipes and Comments Models were inspired by the blog walkthrough by the Code Institute and the  [Smoothies App by Soukaina Samadi](https://github.com/soukasamadi/Smoothies-blog?tab=readme-ov-file). 
+The Profile, Recipes and Comments Models were inspired by the blog walkthrough by the Code Institute and the [Smoothies App by Soukaina Samadi](https://github.com/soukasamadi/Smoothies-blog?tab=readme-ov-file). 
 They helped me to get a good and secure grasp of the templating structure and connected Python files to push my features further, adjusting them to suit my project. 
 
 Through the Admin Django Dashboard, the connected user_id to all data entered to the site means that the Admin can remove a User and their data completely through the additon of on_delete=models.CASCADE. 
@@ -220,13 +223,13 @@ CSRF (Cross-Site Request Forgery) tokens are included in every form to help auth
 The idea behind Lively is to make healthy recipes accessible to all who want to live a healthier life. Therefore, I wanted most parts of the website to be accessible without creating a user.
 And then inviting them to the Lively community by providing special features for users; at the moment, this makes it possible to add comments, but for the future, more features could be added.
 
-ADD IMAGE ACCESSIBILITY
+![accessability](assets/readme/screenshots/accessability.png)
 
 ## [CRUD Functionality](https://github.com/idamariasofie/lively#crud-functionality)
 
 Users can Create, Read, Update, and Delete their shared information on Lively. Some features make full CRUD functionality available, while others present the necessary options only.
 
-ADD IN IMAGE
+![crud](assets/readme/screenshots/crud.png)
 
 ## [Features Showcase](https://github.com/idamariasofie/lively#feature-showcase)
 
@@ -236,12 +239,13 @@ Features showcase, screenshots of the features in use were taken on a laptop. Al
 
 Header & Navigation - (Profile headline only visible to Logged-In Users)
 
-ADD IMAGE 
-ADD IMAGE
+![navbar](assets/readme/screenshots/navbar.png)
+
+![navbar](assets/readme/screenshots/navbar-profile.png)
 
 Footer - Visible to all Users
 
-ADD IMAGE
+![navbar](assets/readme/screenshots/navbar-profile.png)
 
 In the footer, the social-media icons open in a new tab when clicked. Lively does not have any active social media currently, so the Facebook, Instagram, Twitter, and Youtube links only bring the user to the home pages.
 
@@ -253,7 +257,7 @@ Home Page - Visible to all Users
 
 In the Home Page 'Hero' section, a carousel is displaying photos and links to about us, and the recipes page. 
 
-ADD IMAGE
+![homepage](assets/readme/screenshots/homepage.png)
 
 ## [Recipes Page](https://github.com/idamariasofie/lively#recipes-page)
 
@@ -265,7 +269,7 @@ On this page, all recipes are being displayed, with a headline above making it e
 
 The user can then open each recipe by clicking on it, and it will open and display an image and the full recipe instructions. The comment section will also be displayed, but only logged-in users are able to add a comment.
 
-ADD IMAGE
+![homepage](assets/readme/screenshots/homepage.png)
 
 ## [About Page](https://github.com/idamariasofie/lively#about-page)
 
@@ -275,7 +279,9 @@ About Page - Visible to all Users
 
 The 'About' section contains a short introduction to Liv, the founder of Lively, and a Q&A with her to get to know her better, and the thoughts behind the blog and the website.
 
-ADD IMAGE
+![aboutimage](assets/readme/screenshots/aboutimage.png)
+
+![about](assets/readme/screenshots/about.png)
 
 ## [Blog](https://github.com/idamariasofie/lively#blog)
 
@@ -285,7 +291,7 @@ Blog Page - Visible to all Users
 
 The Blog displays all posts made on Lively. These features post on meditation, exercise and recipes. The Blog is supposed to inspire the users to live a balanced and healthy life, not only providing recipes.
 
-ADD IMAGE
+![blogpage](assets/readme/screenshots/blogpage.png)
 
 ## [Contact](https://github.com/idamariasofie/lively#contact)
 
@@ -295,7 +301,7 @@ Contact page - Visible to all Users
 
 The contact page features a contact form, making it easy for visitors to send comments or questions to Lively.
 
-ADD IMAGE 
+![contact](assets/readme/screenshots/contact.png)
 
 ## [Login](https://github.com/idamariasofie/lively#login)
 
@@ -307,7 +313,7 @@ The user is greeted with a welcome message and a link to the sign-up page if the
 
 A message appears for the user when logged in "You are logged in as..."
 
-ADD IMAGE 
+![loggedin](assets/readme/screenshots/loggedin.png)
 
 ## [Logout](https://github.com/idamariasofie/lively#logout)
 
@@ -319,7 +325,7 @@ When clicking on the "Logout" headline, the user is asked "Are you sure you want
 
 And can then choose between, "Yes, Logout" - and will be redirected to the Lively Homepage, or "No, Go back"
 
-ADD IMAGE
+![logout](assets/readme/screenshots/loggedin.png)
 
 ## [Profile](https://github.com/idamariasofie/lively#profile)
 
@@ -330,7 +336,7 @@ Profile Page - Registered Users only
 The user profile is created upon registration, in the profile when clicking on the headline. The user will access "User Profile" displaying their name, bio, profile picture and Display name. 
 At the bottom of this page, the user can also access the "Delete profile" button. 
 
-ADD IMAGE
+![profile](assets/readme/screenshots/profile-user.png)
 
 ## [Delete Profile](https://github.com/idamariasofie/lively#delete-profile)
 
@@ -340,6 +346,8 @@ Delete Profile Page - Registered Users only
 
 Will appear when the user clicked on the "Delete profile" button. The user is being asked if they are sure they want to delete their profile. 
 
+![deleteprofile](assets/readme/screenshots/profile-delete.png)
+
 ## [Admin Panel](https://github.com/idamariasofie/lively#admin-panel)
 
 **Admin Panel**
@@ -347,11 +355,11 @@ Will appear when the user clicked on the "Delete profile" button. The user is be
 Through Django's built-in Administration Panel, the Admin has full access over the data submitted to the website by registered Users. To access the Admin panel, the Admin user adds '/admin/' to the end of the URL to display [Admin](https://8000-idamariasofie-lively-ui5lancuij8.ws-eu108.gitpod.io/admin/). 
 A username and password are requested. It is only the website owner that has access to admin, and she is the only superuser. In admin, you can approve comments, add, edit, and delete recipes and blog posts.
 
-ADD IMAGE
+![admin](assets/readme/screenshots/admin.png)
 
 # Future Features
 
-[Jump to Future Features](https://github.com/idamariasofie/lively#future-features)
+[Future Features](https://github.com/idamariasofie/lively#future-features)
 
 - **Downloadable app with quicker access to recipes, meal plans, exercise, and meditation**: I can envision Lively as an app developing it into a healthy lifestyle space and build the community.
 - **Introduce weekly meal and workout plans**: This would require a paid membership, where the user will get access to weekly meal plans, workout plans, and meditation suggestions.
@@ -359,7 +367,7 @@ ADD IMAGE
 
 # Technologies & Languages Used
 
-[Jump to Technologies & Languages Used](https://github.com/idamariasofie/lively#technologies--languages-used)
+[Technologies & Languages Used](https://github.com/idamariasofie/lively#technologies--languages-used)
 
 - HTML
 - CSS
@@ -378,11 +386,11 @@ ADD IMAGE
 
 ## Libraries & Frameworks
 
-[Jump to Libraries & Frameworks](https://github.com/idamariasofie/lively#libraries--frameworks)
+[Libraries & Frameworks](https://github.com/idamariasofie/lively#libraries--frameworks)
 
 ### Django Packages
 
-[Jump to Django Packages](https://github.com/idamariasofie/lively#django-packages)
+[Django Packages](https://github.com/idamariasofie/lively#django-packages)
 
 - [Gunicorn](https://gunicorn.org/): Used as the server for Heroku.
 - [Cloudinary](https://cloudinary.com/): Used to host the static files and media.
@@ -394,7 +402,7 @@ ADD IMAGE
 
 ### Frameworks - Libraries - Programs Used
 
-[Jump to Frameworks - Libraries - Programs Used](https://github.com/idamariasofie/lively#frameworks---libraries---programs-used)
+[Frameworks - Libraries - Programs Used](https://github.com/idamariasofie/lively#frameworks---libraries---programs-used)
 
 - [Bootstrap](https://getbootstrap.com/): Used to style the website, add responsiveness, and interactivity.
 - [Jquery](https://jquery.com/): All the scripts were written using the jQuery library.
@@ -414,7 +422,7 @@ ADD IMAGE
 
 ## Tools & Programs
 
-[Jump to Tools & Programs](https://github.com/idamariasofie/lively#tools--programs)
+[Tools & Programs](https://github.com/idamariasofie/lively#tools--programs)
 
 - [Cloud Converter](https://cloudconvert.com/): Used for file conversion to PNG, WEBP.
 - [Lucidchart](https://www.lucidchart.com/pages): Used for ERD (entity relationship diagram) creation.
@@ -423,17 +431,17 @@ ADD IMAGE
 
 # Testing
 
-[Jump to Testing](https://github.com/idamariasofie/lively#testing)
+[Testing](https://github.com/idamariasofie/lively#testing)
 
 For all testing, please refer to the [TESTING.md](https://github.com/idamariasofie/lively/blob/main/TESTING.md) file.
 
 # Deployment
 
-[Jump to Deployment](https://github.com/idamariasofie/lively#deployment)
+[Deployment](https://github.com/idamariasofie/lively#deployment)
 
 ## Connecting to GitHub
 
-[Jump to Connecting to GitHub](https://github.com/idamariasofie/lively#connecting-to-github)
+[Connecting to GitHub](https://github.com/idamariasofie/lively#connecting-to-github)
 
 To begin this project from scratch, you must first create a new GitHub repository using the [Code Institute's Template](https://github.com/Code-Institute-Org/ci-full-template). This template provides the relevant tools to get you started. To use this template:
 
@@ -445,7 +453,7 @@ To begin this project from scratch, you must first create a new GitHub repositor
 
 ## Django Project Setup
 
-[Jump to Django Project Setup](https://github.com/idamariasofie/lively#django-project-setup)
+[Django Project Setup](https://github.com/idamariasofie/lively#django-project-setup)
 
 1. Go to the Code Institute Gitpod Full Template [Template](https://github.com/Code-Institute-Org/gitpod-full-template).
 2. Click on 'Use This Template'.
@@ -463,19 +471,19 @@ To begin this project from scratch, you must first create a new GitHub repositor
 
 ## Cloudinary API
 
-[Jump to Cloudinary API](https://github.com/idamariasofie/lively#cloudinary-api)
+[Cloudinary API](https://github.com/idamariasofie/lively#cloudinary-api)
 
 - [Cloudinary](https://cloudinary.com/) was used for cloud media storage of user-uploaded images.
 
 ## Elephant SQL
 
-[Jump to Elephant SQL](https://github.com/idamariasofie/lively#elephant-sql)
+[Elephant SQL](https://github.com/idamariasofie/lively#elephant-sql)
 
 - [ElephantSQL](https://www.elephantsql.com/) was used to host the PostgreSQL database needed to collect and recall the users' data.
 
 ## Heroku Deployment
 
-[Jump to Heroku Deployment](https://github.com/idamariasofie/lively#heroku-deployment)
+[Heroku Deployment](https://github.com/idamariasofie/lively#heroku-deployment)
 
 1. Log in to [Heroku](https://www.heroku.com/) or create a new account.
 2. Click on the '**New**' button and then '**Create New App**'.
@@ -488,7 +496,7 @@ To begin this project from scratch, you must first create a new GitHub repositor
 
 ## Clone Project
 
-[Jump to Clone Project](https://github.com/idamariasofie/lively#clone-project)
+[Clone Project](https://github.com/idamariasofie/lively#clone-project)
 
 To clone this project to your local machine:
 
@@ -501,7 +509,7 @@ To clone this project to your local machine:
 
 ## Fork Project
 
-[Jump to Fork Project](https://github.com/idamariasofie/lively#fork-project)
+[Fork Project](https://github.com/idamariasofie/lively#fork-project)
 
 To fork this repository:
 
@@ -511,24 +519,24 @@ To fork this repository:
 
 # Credits
 
-[Jump to Credits](https://github.com/idamariasofie/lively#credits)
+[Credits](https://github.com/idamariasofie/lively#credits)
 
 ## Code
 
-[Jump to Code](https://github.com/idamariasofie/lively#code)
+[Code](https://github.com/idamariasofie/lively#code)
 
 - The design of the login and registration system was heavily influenced by Code Institute's Boutique Ado project.
 
 ## Media
 
-[Jump to Media](https://github.com/idamariasofie/lively#media)
+[Media](https://github.com/idamariasofie/lively#media)
 
 - The images used in this site were obtained from Unsplash and Pexels.
 - The favicon was generated using [Favicon](https://favicon.io/).
 
 ### Additional reading/tutorials/books/blogs
 
-[Jump to Additional Reading/Tutorials/Books/Blogs](https://github.com/idamariasofie/lively#additional-readingtutorialsbooksblogs)
+[Additional Reading/Tutorials/Books/Blogs](https://github.com/idamariasofie/lively#additional-readingtutorialsbooksblogs)
 
 - [MDN Web Docs](https://developer.mozilla.org/)
 - [W3Schools](https://www.w3schools.com/)
@@ -581,6 +589,7 @@ The sources complemented my learning for this project, alongside the [Code Insti
 ### [ChatGPT](https://github.com/idamariasofie/lively#chatgpt):
 
 - For explaining URLs
+- Implementing Comment model and CommentForm
 
 ## Media
 
