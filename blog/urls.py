@@ -13,6 +13,7 @@ from .views import (
     delete_profile,
     recipe_detail,
     CustomLogoutView
+    search_results
 )
 
 urlpatterns = [
@@ -29,4 +30,5 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('signup/', SignupView.as_view(), name='signup'),
+    path('search_results/', search_results, name='search_results'),
 ]

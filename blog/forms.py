@@ -1,16 +1,14 @@
-from .models import Comment, Recipe, Profile
+# forms.py
 from django import forms
-
+from .models import Comment, Recipe, Profile
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio', 'profile_picture', 'display_name']
 
-
 class SearchForm(forms.Form):
     search_query = forms.CharField(max_length=200, required=False)
-
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -30,12 +28,10 @@ class CommentForm(forms.ModelForm):
         else:
             self.fields['user'] = forms.ModelChoiceField(queryset=user)
 
-
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
         fields = ['title', 'overview', 'content', 'status', 'photo']
-
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100)

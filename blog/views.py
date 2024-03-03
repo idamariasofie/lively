@@ -140,6 +140,16 @@ def contact(request):
     return render(request, 'blog/contact.html', {'form': form})
 
 
+def search_results(request):
+    query = request.GET.get('q')
+    comments = Comment.objects.filter(
+        Q(author__username__icontains=query) |
+        Q(content__icontains=query)
+    )
+
+    return render(request, 'blog/search_results.html', {'results': comments, 'query': query})
+
+
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
     comments = recipe.comments.all()
