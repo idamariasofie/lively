@@ -139,7 +139,7 @@ Visitor user story
 
 User profile
 
-![Profileuserstory](assets/readme/screenshots/userprofile.png)
+![Profileuserstory](assets/readme/screenshots/profile-user.png)
 
 Recipes
 
@@ -271,7 +271,7 @@ On this page, all recipes are being displayed, with a headline above making it e
 
 The user can then open each recipe by clicking on it, and it will open and display an image and the full recipe instructions. The comment section will also be displayed, but only logged-in users are able to add a comment.
 
-![homepage](assets/readme/screenshots/homepage.png)
+![recipes](assets/readme/screenshots/recipespage.png)
 
 ## [About Page](https://github.com/idamariasofie/lively#about-page)
 
@@ -338,7 +338,7 @@ Profile Page - Registered Users only
 The user profile is created upon registration, in the profile when clicking on the headline. The user will access "User Profile" displaying their name, bio, profile picture and Display name. 
 At the bottom of this page, the user can also access the "Delete profile" button. 
 
-![profile](assets/readme/screenshots/profile-user.png)
+![profile](assets/readme/screenshots/userprofile.png)
 
 ## [Delete Profile](https://github.com/idamariasofie/lively#delete-profile)
 
@@ -375,16 +375,6 @@ A username and password are requested. It is only the website owner that has acc
 - CSS
 - JavaScript
 - Python
-- [Git](https://git-scm.com/): Used for version control.
-- [GitHub](https://www.github.com/): Used for online storage of codebase and Projects tool.
-- [Gitpod](https://www.gitpod.io): Used as an online, cloud-based IDE for development.
-- [Figma](https://www.figma.com/): Used for project design planning and wireframe creation.
-- [Adobe Color](https://color.adobe.com/): Used for color theme creation and accessibility checkers.
-- [Django](https://www.djangoproject.com/): Used as the Python framework for the site.
-- [Cloudinary](https://cloudinary.com/): Used for cloud media storage of user-uploaded images.
-- [ElephantSQL](https://www.elephantsql.com/): Used to host the PostgreSQL database needed to collect and recall the user's data.
-- [Heroku](https://www.heroku.com/): Used to host the Lively application.
-- [WAVE](https://wave.webaim.org/): Used to evaluate the accessibility of the site.
 
 ## Libraries & Frameworks
 
@@ -407,7 +397,6 @@ A username and password are requested. It is only the website owner that has acc
 [Frameworks - Libraries - Programs Used](https://github.com/idamariasofie/lively#frameworks---libraries---programs-used)
 
 - [Bootstrap](https://getbootstrap.com/): Used to style the website, add responsiveness, and interactivity.
-- [Jquery](https://jquery.com/): All the scripts were written using the jQuery library.
 - [Git](https://git-scm.com/): Git was used for version control by utilizing the Gitpod terminal to commit to Git and push to GitHub.
 - [GitHub](https://github.com/): GitHub is used to store the project's code after being pushed from Git.
 - [Heroku](https://id.heroku.com/): Heroku was used to deploy the live project.
@@ -430,7 +419,6 @@ A username and password are requested. It is only the website owner that has acc
 - [Cloud Converter](https://cloudconvert.com/): Used for file conversion to PNG, WEBP.
 - [Lucidchart](https://www.lucidchart.com/pages): Used for ERD (entity relationship diagram) creation.
 - [Perplexity AI](https://www.perplexity.ai/): Used for breaking down Python concepts and Django documentation into more understandable chunks.
-- [Favicon](https://favicon.io/): Used for converting an icon into favicon.
 
 # Testing
 
@@ -550,7 +538,7 @@ To fork this repository:
 
 # Credits
 
-[Jump to Credits in Table of Contents](https://github.com/idamariasofie/lively#credits)
+[Credits](https://github.com/idamariasofie/lively#credits)
 
 ## Code
 
@@ -596,7 +584,7 @@ The sources complemented my learning for this project, alongside the [Code Insti
 
 ## Media
 
-[Jump to Media in Table of Contents](https://github.com/idamariasofie/lively#media)
+[Media](https://github.com/idamariasofie/lively#media)
 
 The following sites were used to gather the photographic media used in Lively:
 
@@ -608,7 +596,7 @@ Inspiration for the website and all food recipes were taken from:
 
 ## Acknowledgements
 
-[Jump to Acknowledgements in Table of Contents](https://github.com/idamariasofie/lively#acknowledgements)
+[Acknowledgements](https://github.com/idamariasofie/lively#acknowledgements)
 
 - Special thank you to my husband for making it possible for me to finalize this project, steering through all colds in February in Sweden and taking care of our boys.
 

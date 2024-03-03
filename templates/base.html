@@ -47,7 +47,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <!-- Your navigation links go here -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ home_url }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ recipes_url }}">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ about_url }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ blog_page_url }}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ contact_url }}">Contact</a>
+                    </li>
+                    <!-- Add other navigation links as needed -->
                 </ul>
                 <form class="d-flex my-2 my-lg-0 ms-auto" method="get" action="{% url 'search_results' %}">
                     {% csrf_token %}
