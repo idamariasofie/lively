@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Baskerville', serif;
 }
 
 p {
@@ -40,31 +40,30 @@ h2 {
 .navbar-nav a.navbar-link {
     text-decoration: none;
     color: black;
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 100; 
+    font-family: 'Baskerville', serif;
+    font-weight: 300;
 }
 
 .navbar-link.active {
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 100; 
+    font-family: 'Baskerville', serif;
 }
 
 /* Search Form Styles */
 .form-control {
-    font-weight: 100; 
-    color: black;
+    font-weight: 300;
+    color: black; 
 }
 
 /* Button Styles */
 .btn.btn-outline-success {
-    color: black;
+    color: black; 
     border-color: black;
 }
 
 /* Button style used throughout website */
 .btn.btn-outline-success:hover,
 .btn.btn-outline-success:active {
-    color: grey;
+    color: grey; 
     background-color: transparent;
     border-color: grey;
 }
@@ -140,7 +139,7 @@ form {
 label {
     display: block;
     margin-bottom: 5px;
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Baskerville', serif;
 }
 
 input {
@@ -175,6 +174,7 @@ input {
     transform: translateY(-50%);
     text-align: left;
     color: black;
+    font-weight: 500; 
 }
 
 .carousel-caption a {
@@ -187,6 +187,7 @@ input {
 
 /* Mobile Styles */
 @media (max-width: 767px) {
+
     /* Hide search bar when the hamburger icon is not expanded */
     .navbar-collapse:not(.show) .form-control {
         display: none;
@@ -200,7 +201,7 @@ input {
     }
 }
 
-/* Computer screens */
+/* Compter screens */
 @media (min-width: 992px) {
     .navbar-expand-lg .navbar-collapse {
         display: flex;

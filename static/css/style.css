@@ -40,12 +40,12 @@ h2 {
 .navbar-nav a.navbar-link {
     text-decoration: none;
     color: black;
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Baskerville', serif;
     font-weight: 300;
 }
 
 .navbar-link.active {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Baskerville', serif;
 }
 
 /* Search Form Styles */
@@ -172,8 +172,9 @@ input {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    text-align: left; 
-    color: black; 
+    text-align: left;
+    color: black;
+    font-weight: 500; 
 }
 
 .carousel-caption a {
