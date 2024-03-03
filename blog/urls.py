@@ -1,9 +1,21 @@
 from django.urls import path
-from .views import home, RecipeListView, RecipeDetailView, about, blog_page, contact, add_comment, search_results, profile, delete_profile, recipe_detail
+from .views import (
+    home,
+    RecipeListView,
+    RecipeDetailView,
+    about,
+    blog_page,
+    contact,
+    add_comment,
+    search_results,
+    profile,
+    delete_profile,
+    recipe_detail,
+)
 
 urlpatterns = [
     path('', home, name='home'),
-    path('recipes/<slug:slug>/recipe_detail/', recipe_detail, name='recipe_detail'),  
+    path('recipes/<slug:slug>/recipe_detail/', recipe_detail, name='recipe_detail'),
     path('about/', about, name='about'),
     path('blog/', blog_page, name='blog'),
     path('contact/', contact, name='contact'),

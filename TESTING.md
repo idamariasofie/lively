@@ -10,7 +10,7 @@ The testing.md file provides an overview of the testing conducted on Lively webs
 * Python testing was done using the PEP8 Online to ensure there were no syntax errors in the project. All python files
 were entered into the online checker and no errors were found in any of the custom codes.
 
-![result](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/857a8e2c-a08a-4761-9a6a-2a9dae48180e)
+![result](assets/readme/screenshots/pep8.png)
 ![result 2](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/7cb7fe93-5e27-4323-b96a-310ac9579ef8)
 
 
@@ -32,7 +32,7 @@ Lighthouse was used to test Performance, Best Practices, Accessibility and SEO o
 
 ### HTML Validation
 
-![html-check-validator](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/b14fcb08-9d0c-47f0-a23f-9d2ab350afb6)
+![html-check-validator](assets/readme/screenshots/html.png)
 
 ### CSS Validation
 

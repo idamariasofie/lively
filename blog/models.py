@@ -5,10 +5,12 @@ from django.urls import reverse
 STATUS = ((0, "Draft"), (1, "Published"))
 User = get_user_model()
 
+
 class Profile(models.Model):
     """
     Model for user profile
     """
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
@@ -22,8 +24,10 @@ class Category(models.Model):
     """
     Model for category
     """
+
     title = models.CharField(max_length=300, unique=True)
-    
+
+
 class Comment(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=1)
     recipe = models.ForeignKey('blog.Recipe', on_delete=models.CASCADE, null=True, default=None)
@@ -42,6 +46,7 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse('recipe_detail', args=[self.recipe.slug])
+
 
 class Recipe(models.Model):
     """ A model for creating a recipe post """
@@ -67,6 +72,7 @@ class Recipe(models.Model):
 
     def get_absolute_url(self):
         return reverse('recipe_detail', kwargs={'slug': self.slug})
+
 
 class About(models.Model):
     title = models.CharField(max_length=200)
