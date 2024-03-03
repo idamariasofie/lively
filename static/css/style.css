@@ -16,7 +16,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.navbar-brand a {
     font-family: 'Baskerville', serif;
 }
 
@@ -40,27 +41,31 @@ h2 {
 .navbar-nav a.navbar-link {
     text-decoration: none;
     color: black;
-    font-family: 'Baskerville', serif;
     font-weight: 300;
 }
 
-.navbar-link.active {
-    font-family: 'Baskerville', serif;
+/* Larger Lively Text Styles */
+.navbar-brand.lively-text {
+    text-align: center;
+}
+
+.navbar-brand.lively-text a {
+    font-size: 60px;  /* Updated font size */
 }
 
 /* Search Form Styles */
 .form-control {
     font-weight: 300;
-    color: black; 
+    color: black;
 }
 
 /* Button Styles */
 .btn.btn-outline-success {
-    color: black; 
+    color: black;
     border-color: black;
 }
 
-/* Button style used throughout website */
+/* Button style used throughout the website */
 .btn.btn-outline-success:hover,
 .btn.btn-outline-success:active {
     color: #e0e0e0;
@@ -94,15 +99,6 @@ h2 {
     margin: 0 10px;
     cursor: pointer;
     font-size: 1.5rem;
-}
-
-/* Lively Text Styles */
-.navbar-brand.lively-text {
-    text-align: center;
-}
-
-.navbar-brand.lively-text a {
-    font-size: 48px;
 }
 
 /* Black text / headlines */
@@ -174,7 +170,7 @@ input {
     transform: translateY(-50%);
     text-align: left;
     color: black;
-    font-weight: 500; 
+    font-weight: 500;
 }
 
 .carousel-caption a {
@@ -187,7 +183,6 @@ input {
 
 /* Mobile Styles */
 @media (max-width: 767px) {
-
     /* Hide search bar when the hamburger icon is not expanded */
     .navbar-collapse:not(.show) .form-control {
         display: none;
@@ -201,7 +196,7 @@ input {
     }
 }
 
-/* Compter screens */
+/* Larger screens */
 @media (min-width: 992px) {
     .navbar-expand-lg .navbar-collapse {
         display: flex;

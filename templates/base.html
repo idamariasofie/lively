@@ -62,7 +62,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ contact_url }}">Contact</a>
                     </li>
-                    <!-- Add other navigation links as needed -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ profile_url }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <form class="d-flex my-2 my-lg-0 ms-auto" method="get" action="{% url 'search_results' %}">
                     {% csrf_token %}
@@ -91,11 +102,9 @@
         {% if user.is_authenticated %}
         <p class="text-end m-3">You are logged in as {{ user }}</p>
         {% endif %}
-
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
-
     </main>
 
     <!-- Footer -->
