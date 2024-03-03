@@ -8,30 +8,26 @@ class ProfileForm(forms.ModelForm):
         fields = ['bio', 'profile_picture', 'display_name']
 
 class SearchForm(forms.Form):
-    search_query = forms.CharField(max_length=200, required=False)
+    q = forms.CharField(max_length=200, required=False)
 
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('user', 'body',) 
+        fields = ('body', 'user')
 
     def __init__(self, user=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['body'].widget.attrs['placeholder'] = 'Add your comment...'
 
         if user:
-            self.fields['user'] = forms.ModelChoiceField(
-                queryset=user,
-                widget=forms.HiddenInput(),
-                initial=user,
-            )
+            self.fields['user'].initial = Profile.objects.get(user=user)
         else:
-            self.fields['user'] = forms.ModelChoiceField(queryset=user)
+            self.fields['user'].queryset = Profile.objects.all()
 
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ['title', 'overview', 'content', 'status', 'photo']
+        fields = ['title', 'overview', 'content', 'status']
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100)

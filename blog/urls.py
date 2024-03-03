@@ -12,13 +12,12 @@ from .views import (
     profile,
     delete_profile,
     recipe_detail,
-    CustomLogoutView
+    CustomLogoutView,
     search_results
 )
 
 urlpatterns = [
     path('', home, name='home'),  
-    path('recipes/<slug:slug>/recipe_detail/', recipe_detail, name='recipe_detail'),
     path('about/', about, name='about'),
     path('blog/', blog_page, name='blog_page'),  
     path('contact/', contact, name='contact'),

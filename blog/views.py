@@ -33,7 +33,7 @@ class RecipeDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = self.object.comment_set.filter(approved=True).order_by("-created_on")
+        context['comments'] = self.object.comments.filter(approved=True).order_by("-created_on")
         return context
 
 
@@ -142,12 +142,12 @@ def contact(request):
 
 def search_results(request):
     query = request.GET.get('q')
-    comments = Comment.objects.filter(
-        Q(author__username__icontains=query) |
+    print(f"Query: {query}")
+    recipes = Recipe.objects.filter(
+        Q(title__icontains=query) |
         Q(content__icontains=query)
     )
-
-    return render(request, 'blog/search_results.html', {'results': comments, 'query': query})
+    return render(request, 'blog/search_results.html', {'results': recipes, 'query': query})
 
 
 def recipe_detail(request, slug):
@@ -187,17 +187,17 @@ def recipe_detail(request, slug):
     )
 
 
-def add_comment(request, recipe_id):
+def add_comment(request, slug):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if request.user.is_authenticated:
             if form.is_valid():
                 comment = form.save(commit=False)
                 comment.user = request.user
-                comment.recipe_id = recipe_id
+                comment.recipe = get_object_or_404(Recipe, slug=slug)
                 comment.save()
                 messages.success(request, 'Your comment was added successfully.')
-                return redirect('recipe_detail', slug=comment.recipe.slug)
+                return redirect('recipe_detail', slug=slug)
             else:
                 for field, errors in form.errors.items():
                     for error in errors:
@@ -206,4 +206,4 @@ def add_comment(request, recipe_id):
             messages.error(request, 'You must be logged in to add a comment.')
             return redirect('login')
 
-    return redirect('recipe_detail', slug=recipe_id)
+    return redirect('recipe_detail', slug=slug)

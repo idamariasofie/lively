@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Search Results for "{{ query }}"</h2>
+<h2>Search Results for "{{ query }}"</h2>
 
-    {% if results %}
-        <ul>
-            {% for result in results %}
-                <li>
-                    <h3><a href="{{ result.get_absolute_url }}">{{ result.title }}</a></h3>
-                    <p>{{ result.description }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No results found for "{{ query }}".</p>
-    {% endif %}
+{% if results %}
+<ul>
+    {% for result in results %}
+    <li>
+        <h3><a href="{{ result.get_absolute_url }}">{{ result.title }}</a></h3>
+        <p>{{ result.content }}</p>
+        <!-- Add other recipe-related information as needed -->
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No results found for "{{ query }}".</p>
+{% endif %}
 {% endblock %}
