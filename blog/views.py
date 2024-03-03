@@ -74,3 +74,88 @@ def about(request):
 
 def contact(request):
     if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+
+            print("Simulating contact form submission...\n")
+            print(f"Name: {name}")
+            print(f"Email: {email}")
+            print(f"Subject: {subject}")
+            print(f"Message: {message}")
+
+            return render(request, 'blog/contact_success.html', {
+                'name': name,
+                'email': email,
+                'subject': subject,
+                'message': message,
+            })
+    else:
+        form = ContactForm()
+
+    return render(request, 'blog/contact.html', {'form': form})
+
+
+def recipe_detail(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    comments = recipe.comments.all()
+    comment_form = CommentForm(user=request.user) 
+
+    # Search functionality
+    query = request.GET.get('q')
+    if query:
+        comments = comments.filter(
+            Q(author__username__icontains=query) |
+            Q(content__icontains=query)
+        )
+
+    if request.method == "POST" and request.user.is_authenticated:
+        comment_form = CommentForm(user=request.user, data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            comment.recipe = recipe
+            comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment awaiting approval'
+            )
+
+    return render(
+        request,
+        "blog/recipe_detail.html",
+        {
+            "recipe": recipe,
+            "comments": comments,
+            "comment_form": comment_form,
+            "query": query,
+        },
+    )
+
+
+def add_comment(request, recipe_id):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if request.user.is_authenticated:
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.user = request.user
+                comment.recipe_id = recipe_id
+                comment.save()
+                messages.success(request, 'Your comment was added successfully.')
+            else:
+                messages.error(request, 'There was an error in your comment.')
+        else:
+            messages.error(request, 'You must be logged in to add a comment.')
+            return redirect('login.html')
+    return redirect('recipe_detail', recipe_id=recipe_id)
+
+
+def search_results(request):
+    query = request.GET.get('search_query', '')
+    results = Recipe.objects.filter(title__icontains=query)
+    return render(request, 'blog/search_results.html', {'results': results, 'query': query})
+

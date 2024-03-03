@@ -420,7 +420,8 @@ A username and password are requested. It is only the website owner that has acc
 - [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/): Used to check App responsiveness and debugging.
 - [Google Fonts](https://fonts.google.com/): Used to add the 2 fonts that were used throughout the project.
 - [Coolors](https://coolors.co/): Used to build the color palette of the project.
-- [Emailjs](https://www.emailjs.com/): Used to send emails from the contact form.
+- [Am I Responsive](https://ui.dev/amiresponsive/): Used display the website on different screen sizes.
+
 
 ## Tools & Programs
 
