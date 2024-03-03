@@ -44,11 +44,11 @@ Lighthouse was used to test Performance, Best Practices, Accessibility and SEO o
 I tested the whole website features and everything seems to work as it should.
 here is the Test case for this project: 
 
-![test case 1](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/9b968acb-f21f-4b3e-b131-76e0148c1566)
+![test1](assets/readme/screenshots/test1.png)
 
-![test case 2](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/3140be56-883f-434c-9ed3-2669ce35ed2f)
-![test case 3](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/f139a72d-0999-46f2-8ea6-3a2615d1bc13)
-![test case 4](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/e0bb95a6-1e23-48f1-b12a-7e4208c3ee58)
+![test2](assets/readme/screenshots/test2.png)
+![test3](assets/readme/screenshots/test3.png)
+![test4](assets/readme/screenshots/test4.png)
 
 Find test case [here](https://docs.google.com/spreadsheets/d/1D6TdwZwfZ7mVyK9X_Vib12rzuCj9LZSZBPsawDiswSs/edit?usp=sharing)
 

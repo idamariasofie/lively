@@ -178,7 +178,7 @@ Sign Up Wireframe
 
 Entity Relationship Diagram (ERD) for Lively, displaying relationships between feature components within the database
 
-![erd](assets/readme/screenshots/erd.png)
+![erd](assets/readme/screenshots/erd1.png)
 
 This ERD demonstrates how each feature interacts with each other and the connected PostgreSQL Database. Using Django's User Model, and Django AllAuth to carry out the user authentication. A user_id is created when the user registers with their username and email. 
 This allows the user to access and edit their profile, bio, image etc and add comments, when logged in. For future development, a weekly meal plan could be added and saved recipes, that could be accessed from the profile. 
