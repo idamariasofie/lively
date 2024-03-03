@@ -12,6 +12,7 @@ from .views import (
     profile,
     delete_profile,
     recipe_detail,
+    CustomLogoutView
 )
 
 urlpatterns = [
@@ -26,6 +27,6 @@ urlpatterns = [
     path('recipes/<slug:slug>/', RecipeDetailView.as_view(), name='recipe_detail'),
     path('recipes/', RecipeListView.as_view(), name='recipes'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('signup/', SignupView.as_view(), name='signup'),
 ]

@@ -5,11 +5,16 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.views.generic.detail import DetailView
 from django.db.models import Q
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView as AuthLogoutView
 from django.contrib.auth import login as auth_login
 from .models import Recipe, Comment, Profile
 from .forms import CommentForm, ContactForm, SearchForm, ProfileForm
 
+class CustomLogoutView(AuthLogoutView):
+    template_name = 'registration/logout.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
 
 class RecipeListView(generic.ListView):
     model = Recipe
