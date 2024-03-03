@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from home import views as index_views
-from blog.views import RecipeListView, RecipeDetailView, about, blog_page, contact, add_comment, search_results, home, profile, delete_profile
+from blog.views import RecipeListView, RecipeDetailView, about, blog_page, contact, add_comment, home, profile, delete_profile
 
 urlpatterns = [
     path('about/', about, name='about'),
@@ -9,7 +9,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('contact/', contact, name='contact'),
-    path('search_results/', search_results, name='search_results'),
     path('summernote/', include('django_summernote.urls')),
 
     path('recipes/', RecipeListView.as_view(), name='recipes'),
