@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.core.paginator import Paginator
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
@@ -30,10 +31,22 @@ class RecipeDetailView(DetailView):
     model = Recipe
     template_name = 'blog/recipe_detail.html'
     context_object_name = 'recipe'
+    paginate_comments_by = 5 
+    paginate_recipes_by = 6  
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = self.object.comments.filter(approved=True).order_by("-created_on")
+        
+        comments = self.object.comments.filter(approved=True).order_by("-created_on")
+        paginator_comments = Paginator(comments, self.paginate_comments_by)
+        page_comments = self.request.GET.get('page_comments')
+        context['comments'] = paginator_comments.get_page(page_comments)
+
+        related_recipes = Recipe.objects.filter(status=1).exclude(slug=self.object.slug).order_by("-created_on")
+        paginator_recipes = Paginator(related_recipes, self.paginate_recipes_by)
+        page_recipes = self.request.GET.get('page_recipes')
+        context['related_recipes'] = paginator_recipes.get_page(page_recipes)
+
         return context
 
 

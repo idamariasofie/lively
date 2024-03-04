@@ -31,12 +31,12 @@
       <div class="card-body">
         <h3 class="mb-3">Comments:</h3>
 
-        <!-- Display search query, if any -->
+        <!-- Display search query -->
         {% if query %}
         <p class="mb-3">Search results for: "{{ query }}"</p>
         {% endif %}
 
-        <!-- Display messages -->
+        <!-- Display messages user -->
         {% if messages %}
         <ul class="messages">
           {% for message in messages %}
@@ -53,6 +53,29 @@
         </div>
         {% endif %}
         {% endfor %}
+
+        <!-- Pagination Comments -->
+        {% if comments.has_other_pages %}
+        <nav aria-label="Comments pagination">
+          <ul class="pagination justify-content-center">
+            {% if comments.has_previous %}
+            <li class="page-item">
+              <a href="?page_comments={{ comments.previous_page_number }}" class="page-link">&laquo; prev</a>
+            </li>
+            {% endif %}
+            {% for i in comments.paginator.page_range %}
+            <li class="page-item{% if comments.number == i %} active{% endif %}">
+              <a href="?page_comments={{ i }}" class="page-link">{{ i }}</a>
+            </li>
+            {% endfor %}
+            {% if comments.has_next %}
+            <li class="page-item">
+              <a href="?page_comments={{ comments.next_page_number }}" class="page-link">next &raquo;</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
 
         <!-- Creating New Comments -->
         {% if user.is_authenticated %}
@@ -71,6 +94,28 @@
     </div>
   </div>
 
+  <!-- Recipes Pagination -->
+  {% if related_recipes.has_other_pages %}
+  <nav aria-label="Related recipes pagination">
+    <ul class="pagination justify-content-center">
+      {% if related_recipes.has_previous %}
+      <li class="page-item">
+        <a href="?page_recipes={{ related_recipes.previous_page_number }}" class="page-link">&laquo; prev</a>
+      </li>
+      {% endif %}
+      {% for i in related_recipes.paginator.page_range %}
+      <li class="page-item{% if related_recipes.number == i %} active{% endif %}">
+        <a href="?page_recipes={{ i }}" class="page-link">{{ i }}</a>
+      </li>
+      {% endfor %}
+      {% if related_recipes.has_next %}
+      <li class="page-item">
+        <a href="?page_recipes={{ related_recipes.next_page_number }}" class="page-link">next &raquo;</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
 </div>
 
 {% endblock content %}
