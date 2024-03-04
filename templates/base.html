@@ -75,10 +75,11 @@
                     </li>
                     {% endif %}
                 </ul>
-                <form class="d-flex my-2 my-lg-0 ms-auto" method="get">
+                <!-- Search Form -->
+                <form class="d-flex my-2 my-lg-0 ms-auto" method="get" action="{% url 'search_results' %}">
                     {% csrf_token %}
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        name="search_query">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q"
+                        value="{{ request.GET.q }}">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -113,18 +114,14 @@
             {% block copyright %}2024 Lively Blog. All rights reserved.{% endblock copyright %}
         </p>
         <p class="m-0 text-center">
-            <a href="https://www.facebook.com/your-facebook-page" target="_blank">
-                <i class="fab fa-facebook-square ms-3"></i>
-            </a>
-            <a href="https://twitter.com/your-twitter-handle" target="_blank">
-                <i class="fab fa-twitter-square ms-3"></i>
-            </a>
-            <a href="https://www.instagram.com/your-instagram-account" target="_blank">
-                <i class="fab fa-instagram-square ms-3"></i>
-            </a>
-            <a href="https://www.youtube.com/your-youtube-channel" target="_blank">
-                <i class="fab fa-youtube-square ms-3"></i>
-            </a>
+            <a href="https://www.facebook.com/your-facebook-page" target="_blank"><i
+                    class="fab fa-facebook-square fa-2x"></i></a>
+            <a href="https://twitter.com/your-twitter-handle" target="_blank"><i
+                    class="fab fa-twitter-square fa-2x"></i></a>
+            <a href="https://www.instagram.com/your-instagram-account" target="_blank"><i
+                    class="fab fa-instagram-square fa-2x"></i></a>
+            <a href="https://www.youtube.com/your-youtube-channel" target="_blank"><i
+                    class="fab fa-youtube-square fa-2x"></i></a>
         </p>
     </footer>
 

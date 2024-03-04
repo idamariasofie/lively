@@ -10,6 +10,7 @@ from django.contrib.auth.views import LoginView, LogoutView as AuthLogoutView
 from django.contrib.auth import login as auth_login
 from .models import Recipe, Comment, Profile
 from .forms import CommentForm, ContactForm, SearchForm, ProfileForm
+from django.views.generic import ListView, DetailView 
 
 class CustomLogoutView(AuthLogoutView):
     template_name = 'registration/logout.html'
@@ -17,32 +18,31 @@ class CustomLogoutView(AuthLogoutView):
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
-class RecipeListView(generic.ListView):
+class RecipeListView(ListView):
     model = Recipe
     template_name = "blog/recipe_list.html"
     context_object_name = 'recipes'
     paginate_by = 6
 
     def get_queryset(self):
-        return Recipe.objects.filter(status=1).order_by("-created_on")
-
+        return Recipe.objects.filter(status=1).order_by("-created_on")[:6]
 
 class RecipeDetailView(DetailView):
     model = Recipe
     template_name = 'blog/recipe_detail.html'
     context_object_name = 'recipe'
-    paginate_comments_by = 5 
-    paginate_recipes_by = 6  
+    paginate_comments_by = 5
+    paginate_recipes_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
+
         comments = self.object.comments.filter(approved=True).order_by("-created_on")
         paginator_comments = Paginator(comments, self.paginate_comments_by)
         page_comments = self.request.GET.get('page_comments')
         context['comments'] = paginator_comments.get_page(page_comments)
 
-        related_recipes = Recipe.objects.filter(status=1).exclude(slug=self.object.slug).order_by("-created_on")
+        related_recipes = Recipe.objects.filter(status=1).exclude(slug=self.object.slug).order_by("-created_on")[:6]
         paginator_recipes = Paginator(related_recipes, self.paginate_recipes_by)
         page_recipes = self.request.GET.get('page_recipes')
         context['related_recipes'] = paginator_recipes.get_page(page_recipes)
