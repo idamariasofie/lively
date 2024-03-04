@@ -100,17 +100,17 @@
     <ul class="pagination justify-content-center">
       {% if related_recipes.has_previous %}
       <li class="page-item">
-        <a href="?page_recipes={{ related_recipes.previous_page_number }}" class="page-link">&laquo; prev</a>
+        <a href="?page_related_recipes={{ related_recipes.previous_page_number }}" class="page-link">&laquo; prev</a>
       </li>
       {% endif %}
       {% for i in related_recipes.paginator.page_range %}
       <li class="page-item{% if related_recipes.number == i %} active{% endif %}">
-        <a href="?page_recipes={{ i }}" class="page-link">{{ i }}</a>
+        <a href="?page_related_recipes={{ i }}" class="page-link">{{ i }}</a>
       </li>
       {% endfor %}
       {% if related_recipes.has_next %}
       <li class="page-item">
-        <a href="?page_recipes={{ related_recipes.next_page_number }}" class="page-link">next &raquo;</a>
+        <a href="?page_related_recipes={{ related_recipes.next_page_number }}" class="page-link">next &raquo;</a>
       </li>
       {% endif %}
     </ul>

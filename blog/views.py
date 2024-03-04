@@ -98,10 +98,8 @@ class LoginView(LoginView):
 def delete_profile(request):
     if request.method == 'POST':
         try:
-            # Delete user's profile
             request.user.profile.delete()
 
-            # Delete the user
             request.user.delete()
 
             messages.success(request, 'Profile deleted successfully.')

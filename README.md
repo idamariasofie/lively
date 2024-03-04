@@ -29,10 +29,7 @@ For Admin access with relevant sign-in information:  [Lively Admin](https://live
         - [Sprints](https://github.com/idamariasofie/lively#sprints)
     - [User Stories](https://github.com/idamariasofie/lively#user-stories)
         - [Visitor User Stories](https://github.com/idamariasofie/lively#visitor-user-stories)
-        - [Epic - User Profile](https://github.com/idamariasofie/lively#epic---user-profile)
-        - [Epic - Articles](https://github.com/idamariasofie/lively#epic---articles)
-        - [Epic - Booking](https://github.com/idamariasofie/lively#epic---booking)
-        - [Epic - Photo Gallery](https://github.com/idamariasofie/lively#epic---photo-gallery)
+        - [User Profile](https://github.com/idamariasofie/lively#epic---user-profile)
     - [Scope Plane](https://github.com/idamariasofie/lively#scope-plane)
     - [Structural Plane](https://github.com/idamariasofie/lively#structural-plane)
     - [Skeleton & Surface Planes](https://github.com/idamariasofie/lively#skeleton--surface-planes)
@@ -366,6 +363,8 @@ A username and password are requested. It is only the website owner that has acc
 - **Downloadable app with quicker access to recipes, meal plans, exercise, and meditation**: I can envision Lively as an app developing it into a healthy lifestyle space and build the community.
 - **Introduce weekly meal and workout plans**: This would require a paid membership, where the user will get access to weekly meal plans, workout plans, and meditation suggestions.
 - **Merchandise section with Lively products**: An easy way for users to find tools for both cooking and workouts.
+- **Serach function**: I did not manage to get this function up and running at the end of the project. 
+
 
 # Technologies & Languages Used
 
@@ -385,7 +384,6 @@ A username and password are requested. It is only the website owner that has acc
 [Django Packages](https://github.com/idamariasofie/lively#django-packages)
 
 - [Gunicorn](https://gunicorn.org/): Used as the server for Heroku.
-- [Cloudinary](https://cloudinary.com/): Used to host the static files and media.
 - [Dj_database_url](https://pypi.org/project/dj-database-url/): Used to parse the database URL from the environment variables in Heroku.
 - [Psycopg2](https://pypi.org/project/psycopg2/): Used as an adaptor for Python and PostgreSQL databases.
 - [Summernote](https://summernote.org/): Used as a text editor.
@@ -418,17 +416,13 @@ A username and password are requested. It is only the website owner that has acc
 
 - [Cloud Converter](https://cloudconvert.com/): Used for file conversion to PNG, WEBP.
 - [Lucidchart](https://www.lucidchart.com/pages): Used for ERD (entity relationship diagram) creation.
-- [Perplexity AI](https://www.perplexity.ai/): Used for breaking down Python concepts and Django documentation into more understandable chunks.
+- [Perplexity AI](https://www.perplexity.ai/): Used for breaking down Python concepts and Django documentation.
 
 # Testing
 
 [Testing](https://github.com/idamariasofie/lively#testing)
 
 For all testing, please refer to the [TESTING.md](https://github.com/idamariasofie/lively/blob/main/TESTING.md) file.
-
-# Deployment
-
-[Deployment](https://github.com/idamariasofie/lively#deployment)
 
 ## Connecting to GitHub
 
@@ -459,12 +453,6 @@ To begin this project from scratch, you must first create a new GitHub repositor
 11. Migrate changes: in the terminal window, type `python3 manage.py migrate`.
 12. Run the server to test if the app is installed, in the terminal window, type `python3 manage.py runserver`.
 13. If the app has been installed correctly, the window will display "The install worked successfully! Congratulations!".
-
-## Cloudinary API
-
-[Cloudinary API](https://github.com/idamariasofie/lively#cloudinary-api)
-
-- [Cloudinary](https://cloudinary.com/) was used for cloud media storage of user-uploaded images.
 
 ## Elephant SQL
 
@@ -510,92 +498,49 @@ To fork this repository:
 
 # Credits
 
-[Credits](https://github.com/idamariasofie/lively#credits)
-
 ## Code
 
-[Code](https://github.com/idamariasofie/lively#code)
+The I think before I blog project by Code Instititute has been a great help in this project.
 
-- The design of the login and registration system was heavily influenced by Code Institute's Boutique Ado project.
+Free Fido project - Readme structure and sprints
+https://github.com/amylour/FreeFido_v2/tree/main
 
-## Media
-
-[Media](https://github.com/idamariasofie/lively#media)
-
-- The images used in this site were obtained from Unsplash and Pexels.
-- The favicon was generated using [Favicon](https://favicon.io/).
-
-### Additional reading/tutorials/books/blogs
-
-[Additional Reading/Tutorials/Books/Blogs](https://github.com/idamariasofie/lively#additional-readingtutorialsbooksblogs)
-
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [W3Schools](https://www.w3schools.com/)
-- [Stack Overflow](https://stackoverflow.com/)
-- [CSS-Tricks](https://css-tricks.com/)
-- [Real Python](https://realpython.com/)
-- [Django Documentation](https://docs.djangoproject.com/)
-
-# Credits
-
-[Credits](https://github.com/idamariasofie/lively#credits)
-
-## Code
-
-The sources complemented my learning for this project, alongside the [Code Institute's](https://codeinstitute.net/ie/) Learning Content.
-
-- [Django Docs](https://github.com/idamariasofie/lively#django-docs)
-- [Bootstrap Docs](https://github.com/idamariasofie/lively#bootstrap-docs)
-- [Google Fonts](https://github.com/idamariasofie/lively#google-fonts)
-- [Font Awesome](https://github.com/idamariasofie/lively#font-awesome)
-
-### [Add Hero Image](https://github.com/idamariasofie/lively#add-hero-image):
-
-- [Google Search](https://www.google.com/search?q=add+bootstrap+hero+image&rlz=1C5CHFA_enSE956SE956&oq=add+bootstrap+hero+image&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigAdIBCDY2MDRqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:25156212,vid:pEwA4-Mmnj8,st:0)
-
-### [Design Inspiration and Recipes](https://github.com/idamariasofie/lively#design-inspiration-and-recipes):
-
-- [Green Kitchen Stories](https://greenkitchenstories.com/)
-
-### [Bootstrap Responsive Images (Carousel)](https://github.com/idamariasofie/lively#bootstrap-responsive-images-carousel):
-
-- [Bootstrap Docs](https://getbootstrap.com/docs/5.3/content/images/)
-
-### [Add Bootstrap 5 Element](https://github.com/idamariasofie/lively#add-bootstrap-5-element):
-
-- [Medium Article](https://medium.com/@devsumitg/how-to-add-bootstrap-5-to-django-framework-47817c9d1adf)
-
-### [Create Django Contact Form](https://github.com/idamariasofie/lively#create-django-contact-form):
-
-- [Mailtrap Article](https://mailtrap.io/blog/django-contact-form/)
-
-### [Style Login Page](https://github.com/idamariasofie/lively#style-login-page):
-
-- [YouTube Tutorial](https://www.youtube.com/watch?v=6-XXvUENY_8)
-
-### [Install Bootstrap](https://github.com/idamariasofie/lively#install-bootstrap):
-
-- [Coding Gear](https://codinggear.org/add-bootstrap-to-django/)
-
-### [ChatGPT](https://github.com/idamariasofie/lively#chatgpt):
-
-- For explaining URLs
-- Implementing Comment model and CommentForm
-
-Smoothies blog have been used for structure of models and base for html pages. 
+Smoothies blog have been used for overall structure of models and base for html pages.
 https://github.com/soukasamadi/Smoothies-blog/tree/main
 
-## Media
+Add hero image:
+https://www.google.com/search?q=add+bootstrap+hero+image&rlz=1C5CHFA_enSE956SE956&oq=add+bootstrap+hero+image&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigAdIBCDY2MDRqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:25156212,vid:pEwA4-Mmnj8,st:0 
 
-[Media](https://github.com/idamariasofie/lively#media)
+Design inspiration and recipes:
+https://greenkitchenstories.com/ 
+
+Bootstrap responsive images (carousel)
+https://getbootstrap.com/docs/5.3/content/images/ 
+
+Add Bootstrap 5 element:
+https://medium.com/@devsumitg/how-to-add-bootstrap-5-to-django-framework-47817c9d1adf 
+
+Create Django contact form:
+https://mailtrap.io/blog/django-contact-form/ 
+
+Style login page:
+https://www.youtube.com/watch?v=6-XXvUENY_8 
+
+Install bootstrap:
+https://codinggear.org/add-bootstrap-to-django/ 
+
+Chatgpt- for explaining URLs and help with impplemention Comment model and CommentForm.
+https://chat.openai.com/ 
+
+## Media
 
 The following sites were used to gather the photographic media used in Lively:
 
-- [Unsplash](https://unsplash.com/)
+-   [Unsplash](https://unsplash.com/)
 
-Inspiration for the website and all food recipes were taken from:
-
+Inspiration for website and all food recipes were taken from
 - [Green Kitchen Stories](https://greenkitchenstories.com)
+
 
 ## Acknowledgements
 
