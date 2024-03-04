@@ -31,14 +31,6 @@ Lighthouse was used to test Performance, Best Practices, Accessibility and SEO o
 
 ![css-validator](assets/readme/screenshots/w3c.png)
 
-
-### JavaScript and jquery Validation
-
-![js-validator](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/9595a2fd-1f34-4331-ac18-de23a3b9c79b)
-
-![jquery-validator](https://github.com/soukasamadi/Smoothies-blog/assets/131408125/e7c7c4e3-8dc8-4859-9275-9966673979e9)
-
-
 ## Manual Testing
 
 I tested the whole website features and everything seems to work as it should.
@@ -62,6 +54,11 @@ Error: The views file in the Django application had multiple instances of blank 
 
 Fix: The fix involved adding or adjusting blank lines where needed and removing trailing whitespaces. 
 
+* Bug 2: Missing Error Messages for Comment Submission
+
+Error: When users encountered issues submitting comments, the error messages displayed were unclear and didn't provide sufficient information. Users might have been confused about what went wrong, impacting their experience on the website.
+
+Solution: I enhanced the error messages for comment submission. Now, if there's an issue with the comment, users will receive more informative messages, guiding them on how to correct the problem. 
 
 
 
