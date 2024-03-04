@@ -36,6 +36,15 @@
         <p class="mb-3">Search results for: "{{ query }}"</p>
         {% endif %}
 
+        <!-- Display messages -->
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         {% for comment in comments %}
         <!-- Filter comments based on the search query -->
         {% if not query or query in comment.body %}
@@ -58,7 +67,6 @@
         {% else %}
         <p class="mb-3">Log in to leave a comment</p>
         {% endif %}
-
       </div>
     </div>
   </div>

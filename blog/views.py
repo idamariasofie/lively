@@ -188,6 +188,7 @@ def recipe_detail(request, slug):
 
 def add_comment(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
+
     if request.method == 'POST':
         form = CommentForm(user=request.user, data=request.POST)
         if form.is_valid():
@@ -198,6 +199,9 @@ def add_comment(request, slug):
             
             comment.recipe = recipe
             comment.save()
+
+            messages.success(request, 'Your comment has been sent for approval.')
+
             return redirect('recipe_detail', slug=slug)
     else:
         form = CommentForm(user=request.user)
