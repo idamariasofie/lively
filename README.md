@@ -5,7 +5,7 @@
 Lively is a healthy lifestyle blog, helping you creating a healthier everyday life. Lively posts daily about exercise, meditation and healthy food. At Lively you can find breakfast, lunch, snacks and dinner recipes, and logged in users can like and comment on posts. Overall tips for helping you become a happier and more balanced version of yourself. 
 Lively has been developed as part of the Code Institute's Full-Stack Developer course as my 4th project - focusing on Django and Bootstrap frameworks, Database manipulation and CRUD functionality. It is for educational purposes only.
 
-[![amiresponsive](assets/readme/screenshots/amiresponsive.png)]
+![amiresponsive](assets/readme/screenshots/amiresponsive.png)
 
 View live site here :  [Lively](https://lively-blog-3c360fbcc1c8.herokuapp.com/)
 
@@ -581,6 +581,9 @@ The sources complemented my learning for this project, alongside the [Code Insti
 
 - For explaining URLs
 - Implementing Comment model and CommentForm
+
+Smoothies blog have been used for structure of models and base for html pages. 
+https://github.com/soukasamadi/Smoothies-blog/tree/main
 
 ## Media
 

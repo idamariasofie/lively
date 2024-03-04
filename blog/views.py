@@ -155,7 +155,6 @@ def recipe_detail(request, slug):
     comments = recipe.comments.all()
     comment_form = CommentForm(user=request.user)
 
-    # Search functionality
     query = request.GET.get('q')
     if query:
         comments = comments.filter(
@@ -188,22 +187,19 @@ def recipe_detail(request, slug):
 
 
 def add_comment(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
     if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if request.user.is_authenticated:
-            if form.is_valid():
-                comment = form.save(commit=False)
-                comment.user = request.user
-                comment.recipe = get_object_or_404(Recipe, slug=slug)
-                comment.save()
-                messages.success(request, 'Your comment was added successfully.')
-                return redirect('recipe_detail', slug=slug)
-            else:
-                for field, errors in form.errors.items():
-                    for error in errors:
-                        messages.error(request, f'Error in {field}: {error}')
-        else:
-            messages.error(request, 'You must be logged in to add a comment.')
-            return redirect('login')
+        form = CommentForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
 
-    return redirect('recipe_detail', slug=slug)
+            user_instance = request.user.profile.user
+            comment.user = user_instance
+            
+            comment.recipe = recipe
+            comment.save()
+            return redirect('recipe_detail', slug=slug)
+    else:
+        form = CommentForm(user=request.user)
+
+    return render(request, 'blog/recipe_detail.html', {'recipe': recipe, 'comment_form': form})
